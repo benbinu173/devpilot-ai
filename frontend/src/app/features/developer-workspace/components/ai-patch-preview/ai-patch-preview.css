@@ -1,0 +1,193 @@
+.patch-preview {
+
+    background: var(--surface-2);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    padding: 20px 22px;
+
+    margin-top: 20px;
+
+}
+
+/* ==========================================================
+   Header
+========================================================== */
+
+.header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin-bottom: 18px;
+
+    padding-bottom: 16px;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+.header__icon {
+
+    flex-shrink: 0;
+
+    width: 36px;
+
+    height: 36px;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: var(--accent-light);
+
+    color: var(--accent);
+
+}
+
+.header__icon svg {
+
+    width: 17px;
+
+    height: 17px;
+
+    stroke: currentColor;
+
+    fill: none;
+
+    stroke-width: 1.8;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+
+}
+
+.header h3 {
+
+    margin: 0;
+
+    font-size: 15.5px;
+
+    font-weight: 600;
+
+    color: var(--text-primary);
+
+}
+
+.header small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--text-secondary);
+
+    font-size: 12.5px;
+
+    text-transform: capitalize;
+
+}
+
+/* ==========================================================
+   Sections
+========================================================== */
+
+.section {
+
+    margin-bottom: 18px;
+
+}
+
+.section:last-of-type {
+
+    margin-bottom: 0;
+
+}
+
+.section h4 {
+
+    margin: 0 0 8px;
+
+    color: var(--text-tertiary);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: .06em;
+
+    text-transform: uppercase;
+
+}
+
+.section p {
+
+    white-space: pre-wrap;
+
+    line-height: 1.7;
+
+    margin: 0;
+
+    font-size: 13.5px;
+
+}
+
+.section--summary p {
+
+    color: var(--text-primary);
+
+}
+
+.section--explanation p {
+
+    color: var(--text-secondary);
+
+}
+
+/* ==========================================================
+   Footer
+========================================================== */
+
+.footer {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    padding-top: 16px;
+
+    margin-top: 4px;
+
+    border-top: 1px solid var(--border);
+
+}
+
+.badge {
+
+    background: var(--primary-light);
+
+    color: var(--primary);
+
+    padding: 5px 12px;
+
+    border-radius: 999px;
+
+    font-size: 11.5px;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: .03em;
+
+}

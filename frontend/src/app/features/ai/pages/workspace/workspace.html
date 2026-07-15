@@ -1,0 +1,29 @@
+<div class="workspace">
+
+    <div class="mobile-topbar">
+        <button
+            class="menu-toggle"
+            (click)="toggleSidebar()"
+            aria-label="Toggle conversation history">
+            <span class="menu-icon"></span>
+        </button>
+        <span class="mobile-title">DevPilot AI</span>
+    </div>
+
+    @if (sidebarOpen()) {
+        <div class="backdrop" (click)="closeSidebar()"></div>
+    }
+
+    <aside class="history" [class.open]="sidebarOpen()">
+        <app-conversation-list></app-conversation-list>
+    </aside>
+
+    <section class="chat">
+        <header class="chat-toolbar">
+            <app-ai-mode-selector></app-ai-mode-selector>
+        </header>
+
+        <app-chat-window></app-chat-window>
+    </section>
+
+</div>

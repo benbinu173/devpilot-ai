@@ -1,0 +1,66 @@
+<div class="stat-card">
+
+    <div class="stat-card__header">
+
+        <span
+            class="stat-card__icon stat-card__icon--{{ icon() }}"
+            aria-hidden="true">
+
+            @switch (icon()) {
+
+                @case ('conversations') {
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"></path>
+                    </svg>
+
+                }
+
+                @case ('snippets') {
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M6 3h9l4 4v14H6z"></path>
+                        <path d="M15 3v4h4"></path>
+                        <line x1="9" y1="13" x2="15" y2="13"></line>
+                        <line x1="9" y1="17" x2="13" y2="17"></line>
+                    </svg>
+
+                }
+
+                @case ('favorites') {
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"></path>
+                    </svg>
+
+                }
+
+                @case ('files') {
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"></path>
+                    </svg>
+
+                }
+
+                @default {
+
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="8"></circle>
+                    </svg>
+
+                }
+
+            }
+
+        </span>
+
+        <span class="stat-card__label">{{ title() }}</span>
+
+    </div>
+
+    <h2 class="stat-card__value">{{ value() }}</h2>
+
+    <p class="stat-card__description">{{ description() }}</p>
+
+</div>

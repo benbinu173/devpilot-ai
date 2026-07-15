@@ -1,0 +1,324 @@
+<div class="auth-page">
+
+    <div class="auth-container">
+
+        <!-- ========================================= -->
+        <!-- Left Branding Panel -->
+        <!-- ========================================= -->
+
+        <div class="auth-brand">
+
+            <div class="brand-content">
+
+                <div class="brand-logo" aria-hidden="true">&gt;_</div>
+
+                <span class="eyebrow">AI-Powered Workspace</span>
+
+                <h1>DevPilot AI</h1>
+
+                <p class="brand-subtitle">
+
+                    Your AI-powered developer workspace.
+
+                </p>
+
+                <div class="feature-list">
+
+                    <div class="feature-item">
+
+                        <span class="feature-icon" aria-hidden="true">
+
+                            <svg viewBox="0 0 24 24">
+                                <rect x="4" y="9" width="16" height="11" rx="2"></rect>
+                                <path d="M9 9V6a3 3 0 0 1 6 0v3"></path>
+                                <line x1="9" y1="14" x2="9" y2="14"></line>
+                                <line x1="15" y1="14" x2="15" y2="14"></line>
+                                <line x1="12" y1="3" x2="12" y2="1.5"></line>
+                            </svg>
+
+                        </span>
+
+                        <div>
+
+                            <h4>AI Coding Assistant</h4>
+
+                            <p>Generate, explain and refactor code instantly.</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="feature-item">
+
+                        <span class="feature-icon" aria-hidden="true">
+
+                            <svg viewBox="0 0 24 24">
+                                <rect x="3" y="4" width="18" height="14" rx="2"></rect>
+                                <path d="M7 9l3 3-3 3"></path>
+                                <line x1="12" y1="15" x2="16" y2="15"></line>
+                            </svg>
+
+                        </span>
+
+                        <div>
+
+                            <h4>Developer Workspace</h4>
+
+                            <p>Manage projects with intelligent AI context.</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="feature-item">
+
+                        <span class="feature-icon" aria-hidden="true">
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="M6 3h9l4 4v14H6z"></path>
+                                <path d="M15 3v4h4"></path>
+                                <line x1="9" y1="13" x2="15" y2="13"></line>
+                                <line x1="9" y1="17" x2="13" y2="17"></line>
+                            </svg>
+
+                        </span>
+
+                        <div>
+
+                            <h4>Code Snippets</h4>
+
+                            <p>Save, organize and reuse production-ready code.</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="brand-terminal" aria-hidden="true">
+
+                    <span class="terminal-dots">
+                        <span></span><span></span><span></span>
+                    </span>
+
+                    <span>devpilot status: online<span class="terminal-cursor"></span></span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ========================================= -->
+        <!-- Login Panel -->
+        <!-- ========================================= -->
+
+        <div class="auth-panel">
+
+            <div class="login-card">
+
+                <div class="logo">
+
+                    <h2>Welcome back</h2>
+
+                    <p>
+
+                        Sign in to continue using DevPilot AI.
+
+                    </p>
+
+                </div>
+
+                <!-- ========================================= -->
+                <!-- Email -->
+                <!-- ========================================= -->
+
+                <div class="form-group">
+
+                    <label>Email</label>
+
+                    <div class="input-wrapper">
+
+                        <input
+                            type="email"
+                            autocomplete="email"
+                            placeholder="Enter your email"
+                            [class.input-error]="email().length > 0 && !emailValid()"
+                            [class.input-success]="showEmailSuccess()"
+                            [ngModel]="email()"
+                            (ngModelChange)="email.set($event)">
+
+                        @if (showEmailSuccess()) {
+
+                            <span class="status-icon success">
+
+                                ✓
+
+                            </span>
+
+                        }
+
+                        @if (email().length > 0 && !emailValid()) {
+
+                            <span class="status-icon error">
+
+                                ✕
+
+                            </span>
+
+                        }
+
+                    </div>
+
+                    @if (email().length > 0 && !emailValid()) {
+
+                        <small class="validation-error">
+
+                            Please enter a valid email address.
+
+                        </small>
+
+                    }
+
+                    @if (showEmailSuccess()) {
+
+                        <small class="validation-success">
+
+                            Email looks good.
+
+                        </small>
+
+                    }
+
+                </div>
+
+                <!-- ========================================= -->
+                <!-- Password -->
+                <!-- ========================================= -->
+
+                <div class="form-group">
+
+                    <label>Password</label>
+
+                    <div class="password-input">
+
+                        <input
+
+                            [type]="showPassword() ? 'text' : 'password'"
+
+                            autocomplete="current-password"
+
+                            placeholder="Enter your password"
+
+                            [class.input-error]="password().length > 0 && !passwordValid()"
+
+                            [class.input-success]="showPasswordSuccess()"
+
+                            [ngModel]="password()"
+
+                            (ngModelChange)="password.set($event)">
+
+                        <button
+
+                            type="button"
+
+                            class="toggle-password"
+
+                            [attr.aria-label]="showPassword() ? 'Hide password' : 'Show password'"
+
+                            (click)="togglePasswordVisibility()">
+
+                            @if (showPassword()) {
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M3 3l18 18"></path>
+                                    <path d="M10.6 10.6a2.5 2.5 0 0 0 3.4 3.4"></path>
+                                    <path d="M6.3 6.5C4.1 8 2.5 10 1.5 12c1.7 3.9 5.6 7 10.5 7 1.7 0 3.2-.3 4.6-1"></path>
+                                    <path d="M17.6 17.7C19.9 16.1 21.6 14 22.5 12c-1.7-3.9-5.6-7-10.5-7-.9 0-1.8.1-2.6.3"></path>
+                                </svg>
+
+                            } @else {
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1.5 12C3.3 7.6 7.3 4.5 12 4.5S20.7 7.6 22.5 12C20.7 16.4 16.7 19.5 12 19.5S3.3 16.4 1.5 12z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+
+                            }
+
+                        </button>
+
+                    </div>
+
+                    @if (password().length > 0 && !passwordValid()) {
+
+                        <small class="validation-error">
+
+                            Password must be at least 8 characters.
+
+                        </small>
+
+                    }
+
+                    @if (showPasswordSuccess()) {
+
+                        <small class="validation-success">
+
+                            Password looks good.
+
+                        </small>
+
+                    }
+
+                </div>
+
+                <!-- ========================================= -->
+                <!-- Error -->
+                <!-- ========================================= -->
+
+                @if (error()) {
+
+                    <div class="error">
+
+                        {{ error() }}
+
+                    </div>
+
+                }
+
+                <!-- ========================================= -->
+                <!-- Login Button -->
+                <!-- ========================================= -->
+
+                <button
+                    class="login-btn"
+                    (click)="login()"
+                    [disabled]="loading() || !formValid()">
+
+                    {{ loading() ? 'Signing In...' : 'Sign In' }}
+
+                </button>
+
+                <!-- ========================================= -->
+                <!-- Footer -->
+                <!-- ========================================= -->
+
+                <div class="footer">
+
+                    Don't have an account?
+
+                    <a routerLink="/register">
+
+                        Create Account
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

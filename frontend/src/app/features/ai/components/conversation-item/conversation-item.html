@@ -1,0 +1,21 @@
+<div
+    class="conversation-item"
+    [class.active]="active()"
+    (click)="select.emit()">
+
+    <div class="conversation-header">
+
+        <h4>{{ title() }}</h4>
+
+        <button
+            class="delete-btn"
+            (click)="deleteConversation($event)"
+            title="Delete Conversation">
+            🗑
+        </button>
+
+    </div>
+
+    <small>{{ updated() }}</small>
+
+</div>

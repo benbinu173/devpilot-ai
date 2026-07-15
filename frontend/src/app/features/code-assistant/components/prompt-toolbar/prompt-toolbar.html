@@ -1,0 +1,17 @@
+<div class="toolbar">
+
+    @for(tool of tools; track tool){
+
+        <button
+
+            [class.active]="selected()===tool.id"
+
+            (click)="toolSelected.emit(tool.id)">
+
+            {{ tool.title }}
+
+        </button>
+
+    }
+
+</div>

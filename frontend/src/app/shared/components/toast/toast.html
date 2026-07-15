@@ -1,0 +1,83 @@
+<div class="toast-container">
+
+    @for (notification of notifications(); track notification.id) {
+
+        <div
+
+            class="toast"
+
+            [class.success]="notification.type === 'success'"
+
+            [class.error]="notification.type === 'error'"
+
+            [class.warning]="notification.type === 'warning'"
+
+            [class.info]="notification.type === 'info'">
+
+            <div class="toast-content">
+
+                <div class="toast-icon">
+
+                    @switch (notification.type) {
+
+                        @case ('success') {
+
+                            ✓
+
+                        }
+
+                        @case ('error') {
+
+                            ✕
+
+                        }
+
+                        @case ('warning') {
+
+                            ⚠
+
+                        }
+
+                        @default {
+
+                            ℹ
+
+                        }
+
+                    }
+
+                </div>
+
+                <div class="toast-text">
+
+                    <h4>
+
+                        {{ notification.title }}
+
+                    </h4>
+
+                    <p>
+
+                        {{ notification.message }}
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <button
+
+                class="close-btn"
+
+                (click)="remove(notification.id)">
+
+                ✕
+
+            </button>
+
+        </div>
+
+    }
+
+</div>

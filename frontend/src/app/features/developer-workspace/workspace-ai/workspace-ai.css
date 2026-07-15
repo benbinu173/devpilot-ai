@@ -1,0 +1,309 @@
+:host {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+}
+
+.workspace-ai {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  min-height: 0;
+}
+
+/* ==========================================================
+   Header
+========================================================== */
+
+.header {
+  flex-shrink: 0;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.header__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header__title h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.ai-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px rgba(34, 211, 238, 0.6);
+  flex-shrink: 0;
+}
+
+.header p {
+  margin-top: 4px;
+  color: var(--text-secondary);
+  font-size: 12.5px;
+}
+
+/* ==========================================================
+   Scrollable info panel — everything except chat + floating toolbar
+========================================================== */
+
+.panel {
+  flex-shrink: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.panel::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+/* ==========================================================
+   Context card — collapsible, matches suggested-questions /
+   quick-ai-actions / ai-history header pattern
+========================================================== */
+
+.context-card {
+  margin: 16px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.context-card__header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 14px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.context-card__header:hover {
+  background: var(--surface-3);
+}
+
+.context-card__header:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.context-card__label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.context-card__chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  transition: transform 0.2s ease;
+}
+
+.context-card__chevron svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.context-card__chevron--open {
+  transform: rotate(180deg);
+}
+
+.context-card__content {
+  padding: 0 14px 14px;
+}
+
+.context-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+
+.context-row:last-child {
+  margin-bottom: 0;
+}
+
+.context-row span {
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.context-row strong {
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: right;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 180px;
+}
+
+/* ==========================================================
+   Selected-code preview
+========================================================== */
+
+.preview-card {
+  margin-top: 16px;
+  border-radius: var(--radius-sm);
+  background: var(--background);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.preview-title {
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  border-bottom: 1px solid var(--border);
+}
+
+.preview-card pre {
+  margin: 0;
+  padding: 12px;
+  max-height: 160px;
+  overflow: auto;
+  white-space: pre-wrap;
+  font-size: 12.5px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================
+   Empty state
+========================================================== */
+
+.empty-context {
+  margin: 16px;
+  padding: 28px 20px;
+  text-align: center;
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--border);
+  color: var(--text-tertiary);
+}
+
+.empty-context h3 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.empty-context p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* ==========================================================
+   Inline loading status
+========================================================== */
+
+.ai-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 16px 16px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.spinner {
+  width: 13px;
+  height: 13px;
+  border: 2px solid rgba(34, 211, 238, 0.3);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+}
+
+/* ==========================================================
+   Chat window — guaranteed minimum height so context content
+   above it can never fully crush it
+========================================================== */
+
+app-chat-window {
+  flex: 1 1 280px;
+  min-height: 220px;
+  min-width: 0;
+  border-top: 1px solid var(--border);
+}
+
+
+:host {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+}
+
+.workspace-ai {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  min-height: 0;
+  min-width: 0;
+}
+
+.panel {
+  flex-shrink: 1;
+  min-height: 0;
+  min-width: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}

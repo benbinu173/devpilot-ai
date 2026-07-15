@@ -1,0 +1,375 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.appearance-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px;
+}
+
+.card-header {
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.card-header h2 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.card-header p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+.setting-section {
+  margin-bottom: 30px;
+}
+
+.setting-section h3 {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.setting-section p {
+  margin: 0 0 14px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ==========================================================
+   Theme Cards
+========================================================== */
+
+.theme-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.theme-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-1);
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.theme-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-hover);
+}
+
+.theme-card.active {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
+}
+
+.theme-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--surface-3);
+  color: var(--text-secondary);
+  transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.theme-icon svg {
+  width: 17px;
+  height: 17px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.theme-card.active .theme-icon {
+  background: var(--primary-light);
+  color: var(--primary);
+  transform: scale(1.06);
+}
+
+.theme-card h4 {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.theme-card.active h4 {
+  color: var(--primary);
+}
+
+.theme-card small {
+  text-align: center;
+  color: var(--text-tertiary);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* ==========================================================
+   Accent Colors
+========================================================== */
+
+.accent-list {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.accent {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  position: relative;
+}
+
+.accent:hover {
+  transform: scale(1.1);
+}
+
+.accent.active {
+  border-color: var(--surface-2);
+  box-shadow: 0 0 0 2px var(--text-primary), var(--shadow-sm);
+  transform: scale(1.06);
+}
+
+.accent.active::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 14px 14px;
+}
+
+.accent--blue { background: var(--primary); }
+.accent--purple { background: #A78BFA; }
+.accent--green { background: var(--success); }
+.accent--orange { background: var(--warning); }
+.accent--red { background: var(--danger); }
+
+/* ==========================================================
+   Font Slider
+========================================================== */
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+input[type="range"] {
+  flex: 1;
+  cursor: pointer;
+  accent-color: var(--primary);
+}
+
+.slider-value {
+  flex-shrink: 0;
+  min-width: 38px;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================
+   Density
+========================================================== */
+
+.density-options {
+  display: flex;
+  gap: 10px;
+}
+
+.density-options button {
+  flex: 1;
+  padding: 11px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-1);
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.density-options button:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+.density-options button.active {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ==========================================================
+   Preview
+========================================================== */
+
+.preview-card {
+  display: flex;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--background);
+  min-height: 160px;
+}
+
+.preview-sidebar {
+  width: 68px;
+  background: var(--surface-1);
+  border-right: 1px solid var(--border);
+}
+
+.preview-content {
+  flex: 1;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.preview-header {
+  height: 16px;
+  width: 60%;
+  border-radius: 6px;
+  background: var(--border);
+}
+
+.preview-widget {
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+
+/* ==========================================================
+   Footer
+========================================================== */
+
+.card-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
+
+.primary-btn,
+.secondary-btn {
+  padding: 11px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.primary-btn {
+  border: none;
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.primary-btn:hover {
+  background: var(--primary-hover);
+  box-shadow: var(--ai-glow-shadow);
+}
+
+.secondary-btn {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.secondary-btn:hover {
+  background: var(--surface-3);
+  border-color: var(--border-hover);
+}
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media (max-width: 900px) {
+  .theme-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .appearance-card {
+    padding: 22px;
+  }
+
+  .density-options {
+    flex-direction: column;
+  }
+
+  .card-footer {
+    flex-direction: column-reverse;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .appearance-card {
+    padding: 18px;
+  }
+
+  .card-header h2 {
+    font-size: 18px;
+  }
+
+  .preview-card {
+    flex-direction: column;
+  }
+
+  .preview-sidebar {
+    width: 100%;
+    height: 48px;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}

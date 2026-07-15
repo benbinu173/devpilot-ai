@@ -1,0 +1,39 @@
+<section class="snippets-page">
+
+    <div class="snippets-tabbar">
+        <button
+            type="button"
+            [class.active]="activePanel() === 'sidebar'"
+            (click)="setPanel('sidebar')">
+            Categories
+        </button>
+        <button
+            type="button"
+            [class.active]="activePanel() === 'list'"
+            (click)="setPanel('list')">
+            Snippets
+        </button>
+        <button
+            type="button"
+            [class.active]="activePanel() === 'preview'"
+            (click)="setPanel('preview')">
+            Preview
+        </button>
+    </div>
+
+    <aside class="sidebar" [class.active]="activePanel() === 'sidebar'">
+        <app-snippet-sidebar></app-snippet-sidebar>
+    </aside>
+
+    <section class="content" [class.active]="activePanel() === 'list'">
+        <app-snippet-search></app-snippet-search>
+        <app-snippet-filter></app-snippet-filter>
+
+        <app-snippet-list></app-snippet-list>
+    </section>
+
+    <aside class="preview" [class.active]="activePanel() === 'preview'">
+        <app-snippet-preview></app-snippet-preview>
+    </aside>
+
+</section>

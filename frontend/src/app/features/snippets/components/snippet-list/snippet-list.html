@@ -1,0 +1,89 @@
+<div class="snippet-list">
+
+    @if (loading()) {
+
+        <div class="skeleton-grid">
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+        </div>
+
+    } @else if (isEmpty()) {
+
+        <div class="list-message">
+
+            @if (hasSearch()) {
+
+                <div class="empty-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </div>
+                <h3>No matching snippets</h3>
+                <p>No snippets were found for your search. Try a different keyword.</p>
+
+            } @else if (hasFilters()) {
+
+                <div class="empty-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <circle cx="12" cy="12" r="0.5" fill="currentColor"></circle>
+                    </svg>
+                </div>
+                <h3>No snippets match your filters</h3>
+                <p>No snippets satisfy the selected filters. Try changing or clearing your filters.</p>
+
+            } @else {
+
+                <div class="empty-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <path d="M14 2v6h6"></path>
+                    </svg>
+                </div>
+                <h3>No snippets yet</h3>
+                <p>Your snippet library is empty. Create your first code snippet to start building your personal collection.</p>
+
+            }
+
+        </div>
+
+    } @else {
+
+        @for (snippet of snippets(); track snippet.id) {
+
+            <div
+                class="snippet-card"
+                [class.selected]="isSelected(snippet)"
+                (click)="select(snippet)">
+
+                <div class="card-header">
+
+                    <span class="language">{{ snippet.language }}</span>
+
+                    <span class="favorite" [class.favorite--active]="snippet.isFavorite">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </span>
+
+                </div>
+
+                <h3 class="title">{{ snippet.title }}</h3>
+
+                <p class="description">{{ snippet.description || 'No description available.' }}</p>
+
+                <div class="card-footer">
+                    <span class="category">{{ snippet.category }}</span>
+                    <span class="usage">{{ snippet.usageCount }} uses</span>
+                </div>
+
+            </div>
+
+        }
+
+    }
+
+</div>

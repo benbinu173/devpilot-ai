@@ -1,0 +1,79 @@
+<div class="sidebar">
+
+    <input
+        #fileInput
+        type="file"
+        hidden
+        (change)="uploadFile($event)">
+
+    <button
+        class="upload-btn"
+        [disabled]="uploading()"
+        (click)="fileInput.click()">
+
+        @if (uploading()) {
+            <span class="spinner" aria-hidden="true"></span>
+            <span>Uploading...</span>
+        } @else {
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3v12"></path>
+                <path d="M7 8l5-5 5 5"></path>
+                <path d="M5 21h14a2 2 0 0 0 2-2v-5"></path>
+                <path d="M3 14v5a2 2 0 0 0 2 2"></path>
+            </svg>
+            <span>Upload Files</span>
+        }
+
+    </button>
+
+    <div class="files-header">
+        <span>Files</span>
+        @if (workspace.files().length > 0) {
+            <span class="files-count">{{ workspace.files().length }}</span>
+        }
+    </div>
+
+    <div class="files">
+
+        @if (loading()) {
+            <div class="skeleton">
+                <div class="skeleton__row"></div>
+                <div class="skeleton__row"></div>
+                <div class="skeleton__row"></div>
+            </div>
+        } @else {
+
+            @for (file of workspace.files(); track file.id) {
+
+                <div
+                    class="file"
+                    [class.active]="workspace.activeFile()?.id === file.id"
+                    (click)="workspace.openFile(file)">
+
+                    <svg class="file__icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <path d="M14 2v6h6"></path>
+                    </svg>
+
+                    <span class="file__name">{{ file.name }}</span>
+
+                </div>
+
+            } @empty {
+
+                <div class="empty">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <path d="M14 2v6h6"></path>
+                    </svg>
+                    <p>No files uploaded</p>
+                    <span>Upload a file to get started</span>
+                </div>
+
+            }
+
+        }
+
+    </div>
+
+</div>

@@ -1,0 +1,134 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.sidebar {
+  position: sticky;
+  top: 24px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.sidebar-header {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-header h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 2px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 13.5px;
+  text-align: left;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-item:hover {
+  background: var(--surface-3);
+  color: var(--text-primary);
+}
+
+.nav-item:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.nav-item.active {
+  background: var(--primary-light);
+  border-color: rgba(99, 102, 241, 0.3);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.nav-item.active .icon {
+  color: var(--primary);
+}
+
+.label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+}
+
+.icon svg {
+  width: 17px;
+  height: 17px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ==========================================================
+   Danger zone — visually separated, not just another item
+========================================================== */
+
+.nav-item.danger {
+  margin-top: 8px;
+  color: var(--text-secondary);
+}
+
+.nav-item.danger .icon {
+  color: var(--text-tertiary);
+}
+
+.nav-item.danger:hover {
+  background: var(--danger-light);
+  color: var(--danger);
+}
+
+.nav-item.danger:hover .icon {
+  color: var(--danger);
+}
+
+.nav-item.danger.active {
+  background: var(--danger-light);
+  border-color: rgba(248, 113, 113, 0.3);
+  color: var(--danger);
+}
+
+.nav-item.danger.active .icon {
+  color: var(--danger);
+}
+
+@media (max-width: 960px) {
+  .sidebar {
+    position: static;
+  }
+}

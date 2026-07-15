@@ -1,0 +1,163 @@
+.snippet-card {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+    background: var(--surface-2);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-sm);
+
+    padding: 18px 20px;
+
+    transition: border-color .25s ease, background .25s ease;
+
+}
+
+.snippet-card:hover {
+
+    border-color: var(--border-hover);
+
+    background: var(--surface-3);
+
+}
+
+.snippet-card__header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+}
+
+.snippet-card__title {
+
+    margin: 0;
+
+    font-size: 15.5px;
+
+    font-weight: 600;
+
+    color: var(--text-primary);
+
+}
+
+.snippet-card__language {
+
+    display: inline-block;
+
+    margin-top: 7px;
+
+    padding: 3px 9px;
+
+    border-radius: 6px;
+
+    background: var(--surface-3);
+
+    border: 1px solid var(--border);
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: .03em;
+
+    text-transform: uppercase;
+
+}
+
+.snippet-card__favorite {
+
+    flex-shrink: 0;
+
+    width: 19px;
+
+    height: 19px;
+
+    color: var(--warning);
+
+}
+
+.snippet-card__favorite svg {
+
+    width: 100%;
+
+    height: 100%;
+
+    fill: currentColor;
+
+    stroke: none;
+
+}
+
+.snippet-card__description {
+
+    margin: 0;
+
+    color: var(--text-secondary);
+
+    font-size: 13.5px;
+
+    line-height: 1.6;
+
+    display: -webkit-box;
+
+    -webkit-line-clamp: 2;
+
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+
+}
+
+.snippet-card__footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-top: 12px;
+
+    border-top: 1px solid var(--border);
+
+}
+
+.snippet-card__category {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 3px 10px;
+
+    border-radius: 999px;
+
+    background: var(--primary-light);
+
+    color: var(--primary);
+
+    font-weight: 600;
+
+    font-size: 11.5px;
+
+}
+
+.snippet-card__usage {
+
+    color: var(--text-tertiary);
+
+    font-size: 12.5px;
+
+}

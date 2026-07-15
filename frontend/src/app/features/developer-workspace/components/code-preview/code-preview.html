@@ -1,0 +1,63 @@
+<app-editor-tabs></app-editor-tabs>
+
+@if (workspace.activeFile(); as file) {
+
+    <div class="code-preview">
+
+        <div class="code-preview__header">
+
+            <span class="code-preview__filename">{{ file.name }}</span>
+
+            <button
+                class="code-preview__copy"
+                [class.code-preview__copy--copied]="copied()"
+                type="button"
+                (click)="copy(file.content)"
+                title="Copy file contents"
+                aria-label="Copy file contents">
+
+                @if (copied()) {
+
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+
+                    Copied
+
+                } @else {
+
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="9" y="9" width="12" height="12" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+
+                    Copy
+
+                }
+
+            </button>
+
+        </div>
+
+        <pre class="code-preview__code"><code #codeBlock>{{ file.content }}</code></pre>
+
+    </div>
+
+}
+@else {
+
+    <div class="empty">
+
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="14" rx="2"></rect>
+            <path d="M7 9l3 3-3 3"></path>
+            <line x1="12" y1="15" x2="16" y2="15"></line>
+        </svg>
+
+        <h4>No file opened</h4>
+
+        <p>Select a file from the sidebar to preview its contents here.</p>
+
+    </div>
+
+}

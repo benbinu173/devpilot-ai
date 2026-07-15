@@ -1,0 +1,74 @@
+<div class="profile-page">
+
+    @if (profile(); as user) {
+
+        <app-profile-header
+            [name]="user.name"
+            [email]="user.email"
+            [role]="user.role"
+            [joinedDate]="user.createdAt"
+            (edit)="openEditModal()">
+        </app-profile-header>
+
+        <app-edit-profile-modal
+            [visible]="editModalOpen()"
+            [profile]="user"
+            [saving]="loading()"
+            (close)="closeEditModal()"
+            (save)="saveProfile($event)">
+        </app-edit-profile-modal>
+
+        <div class="profile-stats">
+
+            <app-profile-stat-card
+                icon="conversations"
+                variant="accent"
+                title="AI Conversations"
+                [value]="stats().conversations">
+            </app-profile-stat-card>
+
+            <app-profile-stat-card
+                icon="snippets"
+                variant="primary"
+                title="Saved Snippets"
+                [value]="stats().snippets">
+            </app-profile-stat-card>
+
+            <app-profile-stat-card
+                icon="favorites"
+                variant="warning"
+                title="Favorite Snippets"
+                [value]="stats().favoriteSnippets">
+            </app-profile-stat-card>
+
+            <app-profile-stat-card
+                icon="files"
+                variant="neutral"
+                title="Workspace Files"
+                [value]="stats().workspaceFiles">
+            </app-profile-stat-card>
+
+        </div>
+
+        <app-profile-info-card [profile]="user"></app-profile-info-card>
+
+    } @else {
+
+        <div class="profile-loading">
+
+            <div class="skeleton skeleton--header"></div>
+
+            <div class="skeleton-stats">
+                <div class="skeleton skeleton--stat"></div>
+                <div class="skeleton skeleton--stat"></div>
+                <div class="skeleton skeleton--stat"></div>
+                <div class="skeleton skeleton--stat"></div>
+            </div>
+
+            <div class="skeleton skeleton--card"></div>
+
+        </div>
+
+    }
+
+</div>

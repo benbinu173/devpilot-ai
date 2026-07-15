@@ -1,0 +1,109 @@
+<div class="workspace-card">
+
+    <div class="workspace-card__header">
+
+        <h3 class="workspace-card__title">Workspace Snapshot</h3>
+
+        <span class="workspace-card__status workspace-card__status--{{ snapshot().aiStatus.toLowerCase() }}">
+
+            <span class="workspace-card__status-dot"></span>
+
+            {{ snapshot().aiStatus }}
+
+        </span>
+
+    </div>
+
+    <div class="workspace-card__list">
+
+        <div class="workspace-card__item">
+
+            <span class="workspace-card__item-label">
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 3h9l4 4v14H6z"></path>
+                    <path d="M15 3v4h4"></path>
+                    <line x1="9" y1="13" x2="15" y2="13"></line>
+                    <line x1="9" y1="17" x2="13" y2="17"></line>
+                </svg>
+
+                Current File
+
+            </span>
+
+            <strong class="workspace-card__item-value">{{ snapshot().currentFile }}</strong>
+
+        </div>
+
+        <div class="workspace-card__item">
+
+            <span class="workspace-card__item-label">
+
+                <svg viewBox="0 0 24 24">
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                    <polyline points="16 6 22 12 16 18"></polyline>
+                </svg>
+
+                Language
+
+            </span>
+
+            <strong class="workspace-card__item-value">{{ snapshot().language }}</strong>
+
+        </div>
+
+        <div class="workspace-card__item">
+
+            <span class="workspace-card__item-label">
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"></path>
+                </svg>
+
+                Files Loaded
+
+            </span>
+
+            <strong class="workspace-card__item-value">{{ snapshot().filesLoaded }}</strong>
+
+        </div>
+
+        <div class="workspace-card__item">
+
+            <span class="workspace-card__item-label">
+
+                <svg viewBox="0 0 24 24">
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="18" x2="14" y2="18"></line>
+                </svg>
+
+                Total Lines
+
+            </span>
+
+            <strong class="workspace-card__item-value">{{ snapshot().totalLines }}</strong>
+
+        </div>
+
+        <div class="workspace-card__item">
+
+            <span class="workspace-card__item-label">
+
+                <svg viewBox="0 0 24 24">
+                    <ellipse cx="12" cy="5" rx="8" ry="3"></ellipse>
+                    <path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"></path>
+                    <path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"></path>
+                </svg>
+
+                Total Size
+
+            </span>
+
+            <strong class="workspace-card__item-value">{{ snapshot().totalSize }}</strong>
+
+        </div>
+
+    </div>
+
+</div>

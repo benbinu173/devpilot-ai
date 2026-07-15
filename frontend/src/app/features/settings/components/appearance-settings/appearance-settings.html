@@ -1,0 +1,133 @@
+<div class="appearance-card">
+
+    <div class="card-header">
+        <div>
+            <h2>Appearance</h2>
+            <p>Personalize the look and feel of DevPilot AI.</p>
+        </div>
+    </div>
+
+    <section class="setting-section">
+        <h3>Theme</h3>
+        <p>Choose how DevPilot AI should appear.</p>
+
+        <div class="theme-options">
+
+            <button
+                class="theme-card"
+                [class.active]="theme() === 'system'"
+                (click)="selectTheme('system')">
+                <span class="theme-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="2" y="4" width="20" height="13" rx="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                    </svg>
+                </span>
+                <h4>System</h4>
+                <small>Follow your operating system.</small>
+            </button>
+
+            <button
+                class="theme-card"
+                [class.active]="theme() === 'light'"
+                (click)="selectTheme('light')">
+                <span class="theme-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4.5"></circle>
+                        <line x1="12" y1="2" x2="12" y2="4.5"></line>
+                        <line x1="12" y1="19.5" x2="12" y2="22"></line>
+                        <line x1="4.2" y1="4.2" x2="6" y2="6"></line>
+                        <line x1="18" y1="18" x2="19.8" y2="19.8"></line>
+                        <line x1="2" y1="12" x2="4.5" y2="12"></line>
+                        <line x1="19.5" y1="12" x2="22" y2="12"></line>
+                        <line x1="4.2" y1="19.8" x2="6" y2="18"></line>
+                        <line x1="18" y1="6" x2="19.8" y2="4.2"></line>
+                    </svg>
+                </span>
+                <h4>Light</h4>
+                <small>Bright interface.</small>
+            </button>
+
+            <button
+                class="theme-card"
+                [class.active]="theme() === 'dark'"
+                (click)="selectTheme('dark')">
+                <span class="theme-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"></path>
+                    </svg>
+                </span>
+                <h4>Dark</h4>
+                <small>Dark interface.</small>
+            </button>
+
+        </div>
+    </section>
+
+    <section class="setting-section">
+        <h3>Accent Color</h3>
+        <p>Select your preferred accent color.</p>
+
+        <div class="accent-list">
+            <button class="accent accent--blue" [class.active]="accentColor() === 'blue'" (click)="selectAccentColor('blue')" aria-label="Blue accent"></button>
+            <button class="accent accent--purple" [class.active]="accentColor() === 'purple'" (click)="selectAccentColor('purple')" aria-label="Purple accent"></button>
+            <button class="accent accent--green" [class.active]="accentColor() === 'green'" (click)="selectAccentColor('green')" aria-label="Green accent"></button>
+            <button class="accent accent--orange" [class.active]="accentColor() === 'orange'" (click)="selectAccentColor('orange')" aria-label="Orange accent"></button>
+            <button class="accent accent--red" [class.active]="accentColor() === 'red'" (click)="selectAccentColor('red')" aria-label="Red accent"></button>
+        </div>
+    </section>
+
+    <section class="setting-section">
+        <h3>Font Size</h3>
+        <p>Adjust text size for better readability.</p>
+
+        <div class="slider-row">
+            <input
+                type="range"
+                min="14"
+                max="20"
+                step="1"
+                [value]="fontSize()"
+                (input)="onFontSizeChange($event)"
+                aria-label="Font size">
+            <span class="slider-value">{{ fontSize() }}px</span>
+        </div>
+    </section>
+
+    <section class="setting-section">
+        <h3>Layout Density</h3>
+        <p>Choose between comfortable or compact spacing.</p>
+
+        <div class="density-options">
+            <button
+                [class.active]="density() === 'comfortable'"
+                (click)="selectDensity('comfortable')">
+                Comfortable
+            </button>
+            <button
+                [class.active]="density() === 'compact'"
+                (click)="selectDensity('compact')">
+                Compact
+            </button>
+        </div>
+    </section>
+
+    <section class="setting-section">
+        <h3>Live Preview</h3>
+        <div class="preview-card">
+            <div class="preview-sidebar"></div>
+            <div class="preview-content">
+                <div class="preview-header"></div>
+                <div class="preview-widget"></div>
+                <div class="preview-widget"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="card-footer">
+        <button class="secondary-btn" type="button" (click)="reset()">Reset</button>
+        <button class="primary-btn" type="button" (click)="save()">Save Changes</button>
+    </div>
+
+</div>

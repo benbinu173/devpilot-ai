@@ -1,0 +1,23 @@
+.page-header{
+
+    margin-bottom:24px;
+
+}
+
+h1{
+
+    font-size:32px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+}
+
+p{
+
+    color:var(--text-secondary);
+
+    font-size:15px;
+
+}

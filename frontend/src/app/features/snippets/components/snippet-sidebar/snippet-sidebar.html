@@ -1,0 +1,75 @@
+<div class="snippet-sidebar">
+
+    <div class="sidebar-header">
+        <div class="sidebar-header__title">
+            <span class="ai-dot"></span>
+            <h2>Code Snippets</h2>
+        </div>
+        <span>{{ total() }} snippets</span>
+    </div>
+
+    <div class="sidebar-section">
+        <h3>Browse</h3>
+
+        <button
+            class="sidebar-item"
+            [class.active]="isAllSelected()"
+            (click)="showAll()">
+            <span>All Snippets</span>
+            <span class="count">{{ total() }}</span>
+        </button>
+
+        <button
+            class="sidebar-item"
+            [class.active]="isFavoritesSelected()"
+            (click)="showFavorites()">
+            <span>Favorites</span>
+            <span class="count">{{ favoriteCount() }}</span>
+        </button>
+
+        <button
+            class="sidebar-item"
+            [class.active]="isRecentSelected()"
+            (click)="showRecent()">
+            <span>Recent</span>
+        </button>
+
+    </div>
+
+    <div class="sidebar-section">
+        <h3>Languages</h3>
+
+        @if (languages().length) {
+            @for (language of languages(); track language) {
+                <button
+                    class="sidebar-item"
+                    [class.active]="isLanguageSelected(language)"
+                    (click)="selectLanguage(language)">
+                    <span>{{ language }}</span>
+                </button>
+            }
+        } @else {
+            <p class="empty-message">No languages available.</p>
+        }
+
+    </div>
+
+    <div class="sidebar-section">
+        <h3>Categories</h3>
+
+        @if (categories().length) {
+            @for (category of categories(); track category) {
+                <button
+                    class="sidebar-item"
+                    [class.active]="isCategorySelected(category)"
+                    (click)="selectCategory(category)">
+                    <span>{{ category }}</span>
+                </button>
+            }
+        } @else {
+            <p class="empty-message">No categories available.</p>
+        }
+
+    </div>
+
+</div>

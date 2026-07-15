@@ -1,0 +1,132 @@
+:host {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
+.message {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 12px;
+  align-items: flex-start;
+  width: 100%;
+  min-width: 0;
+}
+
+.message.user {
+  grid-template-columns: minmax(0, 1fr) 34px;
+}
+
+.message.user .message__avatar {
+  order: 2;
+}
+
+.message.user .message__bubble {
+  order: 1;
+  justify-self: end;
+}
+
+/* ==========================================================
+   Avatar
+========================================================== */
+
+.message__avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-secondary);
+}
+
+.message:not(.user) .message__avatar {
+  background: var(--accent-light);
+  color: var(--accent);
+  border-color: transparent;
+}
+
+.message__avatar svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ==========================================================
+   Bubble
+========================================================== */
+
+.message__bubble {
+  min-width: 0;
+  max-width: 100%;
+  width: fit-content;
+  background: var(--surface-2);
+  color: var(--text-primary);
+  padding: 16px 18px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.message:not(.user) .message__bubble {
+  border-top-left-radius: 4px;
+}
+
+.message.user .message__bubble {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  border-top-right-radius: 4px;
+}
+
+/* ==========================================================
+   Code Block
+========================================================== */
+
+.message__code {
+  margin-top: 14px;
+  padding: 16px;
+  border-radius: 10px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  overflow-x: auto;
+  max-width: 100%;
+  min-width: 0;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.message__code::-webkit-scrollbar {
+  height: 6px;
+}
+
+.message__code::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 6px;
+}
+
+/* ==========================================================
+   Timestamp
+========================================================== */
+
+.message__time {
+  display: block;
+  margin-top: 12px;
+  color: var(--text-tertiary);
+  font-size: 12px;
+}
+
+.message.user .message__time {
+  color: rgba(255, 255, 255, .65);
+}

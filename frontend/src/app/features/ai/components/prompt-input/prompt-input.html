@@ -1,0 +1,19 @@
+<div class="prompt">
+
+    <div class="textarea-wrapper">
+        <textarea
+            [value]="prompt()"
+            (input)="prompt.set($any($event.target).value)"
+            (keydown)="handleKeyDown($event)"
+            placeholder="Ask DevPilot AI anything...">
+        </textarea>
+    </div>
+
+    <button
+        class="send-btn"
+        [disabled]="!prompt().trim()"
+        (click)="sendMessage()">
+        <span>Send</span>
+    </button>
+
+</div>

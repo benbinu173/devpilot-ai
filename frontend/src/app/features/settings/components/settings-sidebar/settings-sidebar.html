@@ -1,0 +1,93 @@
+<div class="sidebar">
+
+    <div class="sidebar-header">
+        <h2>Settings</h2>
+    </div>
+
+    <nav>
+
+        @for (item of items(); track item.id) {
+
+            <button
+                class="nav-item"
+                [class.active]="selected() === item.id"
+                [class.danger]="item.id === 'danger'"
+                (click)="select(item.id)">
+
+                <span class="icon">
+
+                    @switch (item.id) {
+
+                        @case ('account') {
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <circle cx="12" cy="8" r="4"></circle>
+                                <path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"></path>
+                            </svg>
+                        }
+
+                        @case ('security') {
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <rect x="5" y="11" width="14" height="10" rx="2"></rect>
+                                <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
+                            </svg>
+                        }
+
+                        @case ('appearance') {
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <circle cx="12" cy="12" r="9"></circle>
+                                <path d="M12 3a9 9 0 0 0 0 18c1.5 0 2-1 2-2s-.5-1.5-.5-2.5 1-2 2-2H17a4 4 0 0 0 4-4c0-4.4-4-8-9-8z"></path>
+                            </svg>
+                        }
+
+                        @case ('ai') {
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <rect x="4" y="9" width="16" height="11" rx="2"></rect>
+                                <path d="M9 9V6a3 3 0 0 1 6 0v3"></path>
+                                <line x1="9" y1="14" x2="9" y2="14"></line>
+                                <line x1="15" y1="14" x2="15" y2="14"></line>
+                                <line x1="12" y1="3" x2="12" y2="1.5"></line>
+                            </svg>
+                        }
+
+                        @case ('notifications') {
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M6 8a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6"></path>
+                                <path d="M10 21a2 2 0 0 0 4 0"></path>
+                            </svg>
+                        }
+
+                        @case ('language') {
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <circle cx="12" cy="12" r="9"></circle>
+                                <line x1="3" y1="12" x2="21" y2="12"></line>
+                                <path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"></path>
+                            </svg>
+                        }
+
+                        @case ('privacy') {
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path>
+                            </svg>
+                        }
+
+                        @case ('danger') {
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 9v4"></path>
+                                <path d="M12 17h.01"></path>
+                                <path d="M10.3 3.9L2.5 17a1.5 1.5 0 0 0 1.3 2.3h16.4a1.5 1.5 0 0 0 1.3-2.3L13.7 3.9a1.5 1.5 0 0 0-2.6 0z"></path>
+                            </svg>
+                        }
+
+                    }
+
+                </span>
+
+                <span class="label">{{ item.label }}</span>
+
+            </button>
+
+        }
+
+    </nav>
+
+</div>

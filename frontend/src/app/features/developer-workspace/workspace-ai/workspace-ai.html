@@ -1,0 +1,175 @@
+<div class="workspace-ai">
+
+    <div class="header">
+        <div class="header__title">
+            <span class="ai-dot"></span>
+            <h2>DevPilot AI</h2>
+        </div>
+        <p>AI-powered development assistant</p>
+    </div>
+
+    <div class="panel">
+
+        @if (activeFile()) {
+
+            <div class="context-card">
+
+                <button
+                    class="context-card__header"
+                    type="button"
+                    (click)="toggleContext()"
+                    [attr.aria-expanded]="contextExpanded()"
+                    aria-controls="context-card-content">
+
+                    <span class="context-card__label">
+                        <span class="ai-dot"></span>
+                        {{ hasSelection() ? 'Selected Code' : 'File Context' }}
+                    </span>
+
+                    <span
+                        class="context-card__chevron"
+                        [class.context-card__chevron--open]="contextExpanded()"
+                        aria-hidden="true">
+
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+
+                    </span>
+
+                </button>
+
+                @if (contextExpanded()) {
+
+                    <div class="context-card__content" id="context-card-content">
+
+                        @if (hasSelection()) {
+
+                            <div class="context-row">
+                                <span>File</span>
+                                <strong class="truncate">{{ activeFile()?.name }}</strong>
+                            </div>
+
+                            <div class="context-row">
+                                <span>Selected Lines</span>
+                                <strong>{{ selectionStart() }}–{{ selectionEnd() }}</strong>
+                            </div>
+
+                            <div class="context-row">
+                                <span>Total Selected</span>
+                                <strong>{{ selectedLineCount() }} lines</strong>
+                            </div>
+
+                            <div class="context-row">
+                                <span>Mode</span>
+                                <strong>{{ currentTool().title }}</strong>
+                            </div>
+
+                            <div class="preview-card">
+                                <div class="preview-title">Selected code preview</div>
+                                <pre>{{ selectionPreview() }}</pre>
+                            </div>
+
+                        } @else {
+
+                            <div class="context-row">
+                                <span>File</span>
+                                <strong class="truncate">{{ activeFile()?.name }}</strong>
+                            </div>
+
+                            <div class="context-row">
+                                <span>Language</span>
+                                <strong>{{ fileLanguage() }}</strong>
+                            </div>
+
+                            <div class="context-row">
+                                <span>Lines</span>
+                                <strong>{{ lineCount() }}</strong>
+                            </div>
+
+                            <div class="context-row">
+                                <span>Size</span>
+                                <strong>{{ fileSize() }}</strong>
+                            </div>
+
+                            <div class="context-row">
+                                <span>Mode</span>
+                                <strong>{{ currentTool().title }}</strong>
+                            </div>
+
+                        }
+
+                    </div>
+
+                }
+
+            </div>
+
+            @if (hasSelection()) {
+
+                <app-selection-toolbar
+                    [loading]="chatService.isStreaming()"
+                    (explain)="explainSelection()"
+                    (debug)="debugSelection()"
+                    (refactor)="refactorSelection()"
+                    (tests)="generateTests()"
+                    (docs)="generateDocs()">
+                </app-selection-toolbar>
+
+            }
+
+            <app-suggested-questions></app-suggested-questions>
+            <app-quick-ai-actions></app-quick-ai-actions>
+
+        } @else {
+
+            <div class="empty-context">
+                <h3>No file selected</h3>
+                <p>Upload or select a file from the workspace to enable context-aware AI.</p>
+            </div>
+
+        }
+
+        @if (aiLoading()) {
+            <div class="ai-status">
+                <span class="spinner"></span>
+                {{ activeAction() | titlecase }} in progress...
+            </div>
+        }
+
+        <app-ai-error
+            [message]="aiError() ?? ''"
+            [loading]="aiLoading()"
+            (retry)="retryAiRequest()"
+            (dismiss)="clearAiError()">
+        </app-ai-error>
+
+        <app-ai-response
+            [response]="aiResponse()"
+            [loading]="aiLoading()"
+            (copy)="copyAiResponse()"
+            (regenerate)="regenerateAiResponse()"
+            (close)="closeAiResponse()">
+        </app-ai-response>
+
+        <app-ai-patch-preview></app-ai-patch-preview>
+        <app-ai-history></app-ai-history>
+
+    </div>
+
+    <app-chat-window></app-chat-window>
+
+    <!-- Floating + fixed-position overlays — outside .panel deliberately, see note below -->
+    <app-floating-ai-toolbar
+        [visible]="showFloatingToolbar()"
+        [left]="toolbarX()"
+        [top]="toolbarY()"
+        [loading]="aiLoading() || chatService.isStreaming()"
+        (explain)="explainSelection()"
+        (debug)="debugSelection()"
+        (refactor)="refactorSelection()"
+        (tests)="generateTests()"
+        (docs)="generateDocs()">
+    </app-floating-ai-toolbar>
+
+</div>

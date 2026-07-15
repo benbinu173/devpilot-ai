@@ -1,0 +1,47 @@
+<div class="save-status">
+
+    @switch (status()) {
+
+        @case ('dirty') {
+            <span class="status status--dirty">
+                <span class="dot"></span>
+                Unsaved changes
+            </span>
+        }
+
+        @case ('saving') {
+            <span class="status status--saving">
+                <span class="spinner"></span>
+                Saving...
+            </span>
+        }
+
+        @case ('saved') {
+            <span class="status status--saved">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Saved
+            </span>
+        }
+
+        @case ('error') {
+            <span class="status status--error">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <line x1="12" y1="8" x2="12" y2="13"></line>
+                    <line x1="12" y1="16" x2="12" y2="16"></line>
+                </svg>
+                Save failed
+            </span>
+        }
+
+        @default {
+            <span class="status status--idle">
+                Ready
+            </span>
+        }
+
+    }
+
+</div>

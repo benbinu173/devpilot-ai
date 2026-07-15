@@ -1,0 +1,29 @@
+<section class="page">
+
+<h1>💻 Code Assistant</h1>
+
+<p>
+
+Choose a developer tool to get started.
+
+</p>
+
+<div class="grid">
+
+@for(tool of tools; track tool.id){
+
+<app-tool-card
+
+    [icon]="tool.icon"
+
+    [title]="tool.title"
+
+    [description]="tool.description">
+
+</app-tool-card>
+
+}
+
+</div>
+
+</section>

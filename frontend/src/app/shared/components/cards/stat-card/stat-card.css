@@ -1,0 +1,133 @@
+.stat-card {
+
+    background: var(--surface-2);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    padding: 24px;
+
+    transition: transform .25s ease, border-color .25s ease;
+
+}
+
+.stat-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color: var(--primary);
+
+}
+
+.stat-card__header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+
+}
+
+.stat-card__icon {
+
+    flex-shrink: 0;
+
+    width: 38px;
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: var(--surface-3);
+
+    border: 1px solid var(--border);
+
+}
+
+.stat-card__icon svg {
+
+    width: 17px;
+
+    height: 17px;
+
+    stroke: currentColor;
+
+    fill: none;
+
+    stroke-width: 1.8;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+
+}
+
+/* Per-metric accent, consistent with the rest of the dashboard */
+
+.stat-card__icon--conversations {
+
+    color: var(--accent);
+
+}
+
+.stat-card__icon--snippets {
+
+    color: var(--primary);
+
+}
+
+.stat-card__icon--favorites {
+
+    color: var(--warning);
+
+}
+
+.stat-card__icon--files {
+
+    color: var(--text-secondary);
+
+}
+
+.stat-card__label {
+
+    color: var(--text-secondary);
+
+    font-size: 13.5px;
+
+    font-weight: 500;
+
+}
+
+.stat-card__value {
+
+    margin: 0;
+
+    color: var(--text-primary);
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.01em;
+
+}
+
+.stat-card__description {
+
+    margin-top: 8px;
+
+    color: var(--text-tertiary);
+
+    font-size: 13.5px;
+
+}

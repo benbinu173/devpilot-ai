@@ -1,0 +1,89 @@
+<div class="snippet-preview">
+
+    @if (loading()) {
+
+        <div class="skeleton-preview">
+            <div class="skeleton-line skeleton-line--badge"></div>
+            <div class="skeleton-line skeleton-line--title"></div>
+            <div class="skeleton-line skeleton-line--text"></div>
+            <div class="skeleton-block"></div>
+        </div>
+
+    } @else if (!hasSelection()) {
+
+        <div class="preview-message">
+            <div class="preview-message__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <path d="M14 2v6h6"></path>
+                </svg>
+            </div>
+            <h3>No snippet selected</h3>
+            <p>Select a snippet from the list to preview its details.</p>
+        </div>
+
+    } @else {
+
+        <div class="preview-header">
+            <span class="language-badge">{{ snippet()!.language }}</span>
+            <h2>{{ snippet()!.title }}</h2>
+            <p class="description">{{ snippet()!.description || 'No description available.' }}</p>
+        </div>
+
+        <app-snippet-toolbar></app-snippet-toolbar>
+
+        <div class="metadata-grid">
+
+            <div class="metadata-item">
+                <span class="metadata-label">Category</span>
+                <span class="chip">{{ snippet()!.category }}</span>
+            </div>
+
+            <div class="metadata-item">
+                <span class="metadata-label">Source</span>
+                <span class="chip">{{ snippet()!.source }}</span>
+            </div>
+
+            <div class="metadata-item">
+                <span class="metadata-label">Usage</span>
+                <span class="metadata-value">{{ snippet()!.usageCount }} uses</span>
+            </div>
+
+            <div class="metadata-item">
+                <span class="metadata-label">Last used</span>
+                <span class="metadata-value">{{ snippet()!.lastUsedAt || 'Never' }}</span>
+            </div>
+
+            <div class="metadata-item">
+                <span class="metadata-label">Created</span>
+                <span class="metadata-value">{{ snippet()!.createdAt | date:'medium' }}</span>
+            </div>
+
+            <div class="metadata-item">
+                <span class="metadata-label">Updated</span>
+                <span class="metadata-value">{{ snippet()!.updatedAt | date:'medium' }}</span>
+            </div>
+
+        </div>
+
+        <div class="preview-section">
+            <h3>Tags</h3>
+            @if (hasTags()) {
+                <div class="tags">
+                    @for (tag of tags(); track tag) {
+                        <span class="chip">{{ tag }}</span>
+                    }
+                </div>
+            } @else {
+                <p class="muted">No tags available.</p>
+            }
+        </div>
+
+        <div class="preview-section preview-section--code">
+            <h3>Code</h3>
+            <app-snippet-monaco></app-snippet-monaco>
+        </div>
+
+    }
+
+</div>

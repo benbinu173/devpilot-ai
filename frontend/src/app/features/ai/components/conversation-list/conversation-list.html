@@ -1,0 +1,29 @@
+<div class="conversation-list">
+
+  <button
+    class="new-chat"
+    (click)="chatService.createNewChat()">
+    <span class="new-chat-icon">+</span>
+    <span>New Chat</span>
+  </button>
+
+  <div class="history-label">Recent</div>
+
+  <div class="history">
+    @for (chat of chatService.chatSessions(); track chat.id) {
+      <app-conversation-item
+        [title]="chat.title"
+        [updated]="chat.updated"
+        [active]="chat.id === chatService.activeSessionId()"
+        (select)="chatService.selectChat(chat.id)"
+        (delete)="deleteChat(chat.id)">
+      </app-conversation-item>
+    } @empty {
+      <div class="empty-state">
+        <p>No conversations yet</p>
+        <span>Start a new chat to see it here</span>
+      </div>
+    }
+  </div>
+
+</div>

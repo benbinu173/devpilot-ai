@@ -1,0 +1,62 @@
+<div class="suggestions">
+
+    <button
+        class="suggestions__header"
+        type="button"
+        (click)="toggle()"
+        [attr.aria-expanded]="expanded()"
+        aria-controls="suggested-questions-content">
+
+        <span class="suggestions__label">
+            <span class="ai-dot"></span>
+            Suggested Questions
+        </span>
+
+        <span class="suggestions__meta">
+
+            @if (!loading() && questions().length > 0) {
+                <span class="suggestions__count">{{ questions().length }}</span>
+            }
+
+            <span
+                class="suggestions__chevron"
+                [class.suggestions__chevron--open]="expanded()"
+                aria-hidden="true">
+
+                <svg viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+
+            </span>
+
+        </span>
+
+    </button>
+
+    @if (expanded()) {
+
+        <div class="suggestions__content" id="suggested-questions-content">
+
+            @if (loading()) {
+                <div class="skeleton">
+                    <div class="skeleton__row"></div>
+                    <div class="skeleton__row"></div>
+                    <div class="skeleton__row"></div>
+                </div>
+            } @else if (questions().length === 0) {
+                <p class="empty">No suggestions available for this file.</p>
+            } @else {
+                @for (question of questions(); track question.title) {
+                    <button
+                        type="button"
+                        (click)="ask(question.prompt)">
+                        {{ question.title }}
+                    </button>
+                }
+            }
+
+        </div>
+
+    }
+
+</div>

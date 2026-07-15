@@ -1,0 +1,27 @@
+<div class="mode-selector">
+
+    <label for="ai-mode">
+        <span class="ai-dot"></span>
+        AI Mode
+    </label>
+
+    <div class="select-wrapper">
+        <select
+            id="ai-mode"
+            [value]="aiEngine.selectedTool().id"
+            (change)="
+                aiEngine.selectTool(
+                    $any($event.target).value
+                )
+            ">
+
+            @for (tool of aiEngine.tools; track tool.id) {
+                <option [value]="tool.id">
+                    {{ tool.title }}
+                </option>
+            }
+
+        </select>
+    </div>
+
+</div>

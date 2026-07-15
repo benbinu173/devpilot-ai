@@ -1,0 +1,162 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: 280px 1fr 420px;
+  height: 100%;
+  background: var(--background);
+  overflow: hidden;
+}
+
+.workspace-tabbar {
+  display: none;
+}
+
+/* ==========================================================
+   Sidebar
+========================================================== */
+
+.workspace-sidebar {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-1);
+  border-right: 1px solid var(--border);
+  padding: 20px;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+/* ==========================================================
+   Editor area
+========================================================== */
+
+.workspace-preview {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--background);
+}
+
+.workspace-preview__header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-1);
+}
+
+.workspace-preview__editor {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ==========================================================
+   AI panel
+========================================================== */
+
+.workspace-ai {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--border);
+  background: var(--surface-1);
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ==========================================================
+   Tablet
+========================================================== */
+
+@media (max-width: 1280px) {
+  .workspace {
+    grid-template-columns: 240px 1fr 340px;
+  }
+}
+
+/* ==========================================================
+   Mobile — single-panel switcher
+========================================================== */
+
+@media (max-width: 960px) {
+  .workspace {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .workspace-tabbar {
+    display: flex;
+    flex-shrink: 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-1);
+  }
+
+  .workspace-tabbar button {
+    flex: 1;
+    padding: 14px 8px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .workspace-tabbar button:hover {
+    color: var(--text-primary);
+  }
+
+  .workspace-tabbar button.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .workspace-sidebar,
+  .workspace-preview,
+  .workspace-ai {
+    display: none;
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    border: none;
+  }
+
+  .workspace-sidebar.active,
+  .workspace-preview.active,
+  .workspace-ai.active {
+    display: flex;
+  }
+}
+
+.workspace-sidebar {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-1);
+  border-right: 1px solid var(--border);
+  padding: 20px;
+  overflow-y: auto;
+  min-height: 0;
+  min-width: 0;
+}
+
+.workspace-ai {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--border);
+  background: var(--surface-1);
+  overflow: hidden;
+  min-height: 0;
+  min-width: 0;
+}

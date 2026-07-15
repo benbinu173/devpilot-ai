@@ -1,0 +1,43 @@
+<div class="tabs">
+
+    @for (file of workspace.openedFiles(); track file.id) {
+
+        <div
+            class="tab"
+            [class.active]="workspace.activeFile()?.id === file.id"
+            [class.dirty]="file.isDirty"
+            (click)="workspace.openFile(file)"
+            tabindex="0"
+            (keydown.enter)="workspace.openFile(file)">
+
+            <div class="tab-title">
+
+                @if (file.isDirty) {
+                    <span class="dirty-dot" aria-hidden="true"></span>
+                }
+
+                <span class="filename">{{ file.name }}</span>
+
+            </div>
+
+            <button
+                class="close-btn"
+                type="button"
+                [attr.aria-label]="'Close ' + file.name"
+                (click)="
+                    $event.stopPropagation();
+                    workspace.closeFile(file.id)
+                ">
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+
+            </button>
+
+        </div>
+
+    }
+
+</div>

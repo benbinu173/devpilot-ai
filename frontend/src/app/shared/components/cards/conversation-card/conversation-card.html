@@ -1,0 +1,36 @@
+<div class="conversation-card">
+
+    <div class="conversation-card__content">
+
+        <h3 class="conversation-card__title">
+
+            {{ title() }}
+
+        </h3>
+
+        <p class="conversation-card__meta">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"></path>
+            </svg>
+
+            AI Conversation
+
+            <span class="conversation-card__separator">•</span>
+
+            {{ updated() }}
+
+        </p>
+
+    </div>
+
+    <span class="conversation-card__arrow" aria-hidden="true">
+
+        <svg viewBox="0 0 24 24">
+            <path d="M5 12h14"></path>
+            <path d="M13 6l6 6-6 6"></path>
+        </svg>
+
+    </span>
+
+</div>

@@ -1,0 +1,84 @@
+.prompt {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 20px 24px;
+  border-top: 1px solid var(--border);
+  background: var(--surface-1);
+}
+
+.textarea-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+  height: 52px;
+  max-height: 160px;
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  background: var(--surface-2);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  font-size: 14px;
+  font-family: inherit;
+  line-height: 1.4;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+textarea::placeholder {
+  color: var(--text-tertiary);
+}
+
+textarea:hover {
+  border-color: var(--border-hover);
+}
+
+/* Focus uses the AI accent, not primary — this box is a direct AI conversation moment */
+textarea:focus-visible,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+/* Send button — full AI-glow gradient, matching login/register submit treatment */
+.send-btn {
+  width: 96px;
+  height: 52px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--ai-glow);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.1s ease, opacity 0.2s ease;
+}
+
+.send-btn:hover:not(:disabled) {
+  box-shadow: var(--ai-glow-shadow);
+}
+
+.send-btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.send-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.send-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+:host {
+  display: block;
+  flex-shrink: 0;
+}

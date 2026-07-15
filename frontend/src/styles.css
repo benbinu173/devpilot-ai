@@ -1,0 +1,72 @@
+/* ==============================
+   DevPilot AI Global Theme
+================================ */
+@import "prismjs/themes/prism-okaidia.css";
+@import "../src//app/shared/styles/hljs-theme.css";
+
+:root {
+  /* ---- Brand ---- */
+  --primary: #6366F1;
+  --primary-hover: #818CF8;
+  --primary-active: #4F46E5;
+  --primary-light: rgba(99, 102, 241, .14);
+  --primary-gradient: linear-gradient(135deg, #6366F1, #818CF8);
+
+  /* ---- AI accent (reserved for AI-driven moments only) ---- */
+  --accent: #22D3EE;
+  --accent-hover: #67E8F9;
+  --accent-light: rgba(34, 211, 238, .14);
+  --ai-glow: linear-gradient(135deg, #6366F1, #22D3EE);
+  --ai-glow-shadow: 0 0 24px rgba(99, 102, 241, .25), 0 0 48px rgba(34, 211, 238, .12);
+
+  /* ---- Surfaces ---- */
+  --background: #0A0E17;
+  --surface-1: #10151F;
+  --surface-2: #161C29;
+  --surface-3: #1D2433;
+  --surface: var(--surface-2);
+  --card: var(--surface-2);
+
+  /* ---- Borders ---- */
+  --border: #262E40;
+  --border-hover: #38415A;
+
+  /* ---- Text ---- */
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-tertiary: #5B6472;
+
+  /* ---- Semantic ---- */
+  --success: #34D399;
+  --warning: #FBBF24;
+  --danger: #F87171;
+  --success-light: rgba(52, 211, 153, .12);
+  --warning-light: rgba(251, 191, 36, .12);
+  --danger-light: rgba(248, 113, 113, .12);
+
+  /* ---- Shape / shadow ---- */
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, .25);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: Inter, Arial, sans-serif;
+  background: var(--background);
+  color: var(--text-primary);
+  height: 100%;
+  overflow: hidden;
+}

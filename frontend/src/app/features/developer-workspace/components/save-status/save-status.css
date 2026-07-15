@@ -1,0 +1,78 @@
+:host {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding-left: 16px;
+}
+
+.save-status {
+  display: flex;
+  align-items: center;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.status svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* Dirty */
+.status--dirty {
+  color: var(--warning);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--warning);
+  flex-shrink: 0;
+}
+
+/* Saving */
+.status--saving {
+  color: var(--accent);
+}
+
+.spinner {
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--accent-light);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Saved */
+.status--saved {
+  color: var(--success);
+}
+
+/* Error */
+.status--error {
+  color: var(--danger);
+}
+
+/* Idle */
+.status--idle {
+  color: var(--text-tertiary);
+}

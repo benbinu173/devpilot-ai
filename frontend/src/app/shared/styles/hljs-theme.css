@@ -1,0 +1,76 @@
+/* ==============================
+   highlight.js theme — DevPilot AI
+   Import once in styles.css:
+   @import "./hljs-theme.css";
+================================ */
+
+.hljs-comment,
+.hljs-quote {
+
+    color: var(--text-tertiary);
+
+    font-style: italic;
+
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal {
+
+    color: var(--accent);
+
+}
+
+.hljs-string,
+.hljs-attr,
+.hljs-template-tag,
+.hljs-addition {
+
+    color: var(--success);
+
+}
+
+.hljs-number {
+
+    color: var(--warning);
+
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+
+    color: var(--primary-hover);
+
+    font-weight: 600;
+
+}
+
+.hljs-built_in,
+.hljs-type,
+.hljs-class .hljs-title {
+
+    color: var(--accent-hover);
+
+}
+
+.hljs-variable,
+.hljs-attribute {
+
+    color: var(--text-primary);
+
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link {
+
+    color: var(--warning);
+
+}
+
+.hljs-deletion {
+
+    color: var(--danger);
+
+}

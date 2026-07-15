@@ -1,0 +1,164 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.settings-page {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 24px;
+  align-items: start;
+  padding: 28px 32px 40px;
+}
+
+.settings-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+.settings-header {
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.settings-header h1 {
+  margin: 0 0 6px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.settings-header p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+.settings-content-body {
+  min-width: 0;
+  padding: 4px 2px;
+}
+
+/* ==========================================================
+   Coming soon state — for unbuilt sections
+========================================================== */
+
+.coming-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  padding: 64px 32px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-1);
+}
+
+.coming-soon__icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  color: var(--text-tertiary);
+}
+
+.coming-soon__icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.coming-soon h2 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.coming-soon p {
+  margin: 0;
+  max-width: 340px;
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+.coming-soon--danger .coming-soon__icon {
+  background: var(--danger-light);
+  border-color: rgba(248, 113, 113, 0.25);
+  color: var(--danger);
+}
+
+/* ==========================================================
+   Account section loading skeleton
+========================================================== */
+
+.section-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.skeleton {
+  border-radius: var(--radius);
+  background: linear-gradient(
+    90deg,
+    var(--surface-2) 0%,
+    var(--surface-3) 50%,
+    var(--surface-2) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+.skeleton--block {
+  height: 280px;
+}
+
+.skeleton--short {
+  height: 140px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media (max-width: 960px) {
+  .settings-page {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .settings-page {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .settings-header h1 {
+    font-size: 20px;
+  }
+
+  .coming-soon {
+    padding: 44px 20px;
+  }
+}

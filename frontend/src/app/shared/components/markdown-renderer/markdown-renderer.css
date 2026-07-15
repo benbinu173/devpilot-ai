@@ -1,0 +1,156 @@
+:host {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.markdown-body {
+  color: var(--text-primary);
+  line-height: 1.7;
+  font-size: 14px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+
+.markdown-body > *:first-child {
+  margin-top: 0;
+}
+
+.markdown-body > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Headings — scaled down for chat-bubble context, not full-document sizing */
+
+.markdown-body h1 {
+  font-size: 19px;
+  margin: 18px 0 10px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.markdown-body h2 {
+  font-size: 17px;
+  margin: 16px 0 9px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.markdown-body h3 {
+  font-size: 15.5px;
+  margin: 14px 0 8px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Paragraphs */
+
+.markdown-body p {
+  margin-bottom: 12px;
+}
+
+/* Lists */
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 22px;
+  margin-bottom: 14px;
+}
+
+.markdown-body li {
+  margin-bottom: 6px;
+}
+
+/* Links */
+
+.markdown-body a {
+  color: var(--accent);
+  text-decoration: none;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+/* Blockquotes */
+
+.markdown-body blockquote {
+  border-left: 3px solid var(--primary);
+  padding: 10px 16px;
+  margin: 14px 0;
+  background: var(--primary-light);
+  border-radius: 8px;
+  color: var(--text-secondary);
+}
+
+/* Inline code */
+
+.markdown-body :not(pre) > code {
+  background: var(--surface-3);
+  color: var(--text-primary);
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-size: 13px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Code block */
+
+.markdown-body pre {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  max-width: 100%;
+  padding: 14px;
+  margin: 14px 0;
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre;
+}
+
+/* Tables — need their own scroll wrapper, width:100% alone
+   doesn't stop a wide table from forcing the parent to grow */
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 14px 0;
+  white-space: nowrap;
+}
+
+.markdown-body th {
+  background: var(--surface-3);
+  padding: 10px 12px;
+  text-align: left;
+  color: var(--text-primary);
+  font-size: 13px;
+}
+
+.markdown-body td {
+  padding: 10px 12px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+}
+
+/* Images */
+
+.markdown-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  margin: 12px 0;
+}

@@ -1,0 +1,57 @@
+<div class="stat-card" [class]="'stat-card--' + variant()">
+
+    <div class="stat-icon" [attr.aria-label]="iconLabel()">
+
+        @switch (icon()) {
+
+            @case ('snippets') {
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+            }
+
+            @case ('favorites') {
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+            }
+
+            @case ('conversations') {
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="4" y="9" width="16" height="11" rx="2"></rect>
+                    <path d="M9 9V6a3 3 0 0 1 6 0v3"></path>
+                    <line x1="9" y1="14" x2="9" y2="14"></line>
+                    <line x1="15" y1="14" x2="15" y2="14"></line>
+                </svg>
+            }
+
+            @case ('time') {
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <polyline points="12 7 12 12 16 14"></polyline>
+                </svg>
+            }
+
+            @case ('files') {
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <path d="M14 2v6h6"></path>
+                </svg>
+            }
+
+            @case ('streak') {
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 22c4.5 0 7-2.7 7-6.5 0-3-1.8-5-3-7-.3 2-1.3 3-2.2 2.2C14.7 9.6 15 7 13 4c0 3-2 5.3-4 7.5-1.5 1.7-2 3-2 4C7 19.3 8.5 22 12 22z"></path>
+                </svg>
+            }
+
+        }
+
+    </div>
+
+    <div class="stat-value">{{ value() }}</div>
+
+    <div class="stat-title">{{ title() }}</div>
+
+</div>

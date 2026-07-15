@@ -1,0 +1,33 @@
+.banner{
+
+    background:#1E293B;
+
+    border:1px solid #334155;
+
+    border-radius:18px;
+
+    padding:32px;
+
+    margin-bottom:30px;
+
+}
+
+h1{
+
+    font-size:34px;
+
+    font-weight:700;
+
+    color:#F8FAFC;
+
+    margin-bottom:12px;
+
+}
+
+p{
+
+    color:#94A3B8;
+
+    font-size:16px;
+
+}

@@ -1,0 +1,384 @@
+<div class="account-settings-card">
+
+    <!-- ===================================================== -->
+    <!-- Header -->
+    <!-- ===================================================== -->
+
+    <div class="card-header">
+
+        <div>
+
+            <h2>
+
+                Account Settings
+
+            </h2>
+
+            <p>
+
+                Manage your personal information and public profile.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- Avatar -->
+    <!-- ===================================================== -->
+
+    <div class="avatar-section">
+
+        <div class="avatar">
+
+           @if (avatarPreview()) {
+
+    <img
+
+        [src]="avatarPreview()"
+
+        alt="Profile Preview">
+
+}
+
+@else if (avatar()) {
+
+    <img
+
+        [src]="avatar()"
+
+        alt="Profile Avatar">
+
+}
+
+@else {
+
+    <span>
+
+        {{ profile().name.charAt(0).toUpperCase() }}
+
+    </span>
+
+}
+
+        </div>
+
+        <div class="avatar-details">
+
+            <h3>
+
+                Profile Picture
+
+            </h3>
+
+            <p>
+
+                Upload a profile picture to personalize your account.
+
+            </p>
+
+        </div>
+
+        <input
+
+    #avatarInput
+
+    type="file"
+
+    accept="image/*"
+
+    hidden
+
+    (change)="selectAvatar($event)">
+
+<button
+
+    type="button"
+
+    class="secondary-btn"
+
+    (click)="avatarInput.click()"
+
+    [disabled]="saving()">
+
+    Change Photo
+
+</button>
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- Personal Information -->
+    <!-- ===================================================== -->
+
+    <div class="form-grid">
+
+        <!-- Full Name -->
+
+        <div class="form-group">
+
+            <label>
+
+                Full Name
+
+            </label>
+
+            <input
+                type="text"
+                 [disabled]="saving()"
+                [class.input-error]="!nameValid()"
+                [ngModel]="name()"
+                (ngModelChange)="name.set($event)">
+
+            @if (!nameValid()) {
+
+                <small class="validation-error">
+
+                    Name must contain at least 3 characters.
+
+                </small>
+
+            }
+
+        </div>
+
+        <!-- Email -->
+
+        <div class="form-group">
+
+            <label>
+
+                Email Address
+
+            </label>
+
+            <input
+                type="email"
+                 [disabled]="saving()"
+                [value]="profile().email"
+                readonly>
+
+        </div>
+
+        <!-- Role -->
+
+        <div class="form-group">
+
+            <label>
+
+                Role
+
+            </label>
+
+            <input
+                type="text"
+                 [disabled]="saving()"
+                [ngModel]="role()"
+                (ngModelChange)="role.set($event)">
+
+        </div>
+
+        <!-- Company -->
+
+        <div class="form-group">
+
+            <label>
+
+                Company
+
+            </label>
+
+            <input
+                type="text"
+                 [disabled]="saving()"
+                [ngModel]="company()"
+                (ngModelChange)="company.set($event)">
+
+        </div>
+
+        <!-- Location -->
+
+        <div class="form-group">
+
+            <label>
+
+                Location
+
+            </label>
+
+            <input
+                type="text"
+                 [disabled]="saving()"
+                [ngModel]="location()"
+                (ngModelChange)="location.set($event)">
+
+        </div>
+
+        <!-- Website -->
+
+        <div class="form-group">
+
+            <label>
+
+                Website
+
+            </label>
+
+            <input
+                type="url"
+                 [disabled]="saving()"
+                [class.input-error]="!websiteValid()"
+                [ngModel]="website()"
+                (ngModelChange)="website.set($event)">
+
+            @if (!websiteValid()) {
+
+                <small class="validation-error">
+
+                    Website must start with https://
+
+                </small>
+
+            }
+
+        </div>
+
+        <!-- GitHub -->
+
+        <div class="form-group">
+
+            <label>
+
+                GitHub
+
+            </label>
+
+            <input
+                type="url"
+                 [disabled]="saving()"
+                [class.input-error]="!githubValid()"
+                [ngModel]="github()"
+                (ngModelChange)="github.set($event)">
+
+            @if (!githubValid()) {
+
+                <small class="validation-error">
+
+                    Enter a valid GitHub profile URL.
+
+                </small>
+
+            }
+
+        </div>
+
+        <!-- LinkedIn -->
+
+        <div class="form-group">
+
+            <label>
+
+                LinkedIn
+
+            </label>
+
+            <input
+                type="url"
+                 [disabled]="saving()"
+                [class.input-error]="!linkedinValid()"
+                [ngModel]="linkedin()"
+                (ngModelChange)="linkedin.set($event)">
+
+            @if (!linkedinValid()) {
+
+                <small class="validation-error">
+
+                    Enter a valid LinkedIn profile URL.
+
+                </small>
+
+            }
+
+        </div>
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- Bio -->
+    <!-- ===================================================== -->
+
+    <div class="form-group bio-group">
+
+        <label>
+
+            Bio
+
+        </label>
+
+        <textarea
+            rows="5"
+             [disabled]="saving()"
+            placeholder="Tell people about yourself..."
+            [ngModel]="bio()"
+            (ngModelChange)="bio.set($event)">
+
+        </textarea>
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- Footer -->
+    <!-- ===================================================== -->
+
+    <div class="card-footer">
+
+      <button
+
+    type="button"
+
+    class="secondary-btn"
+
+    (click)="resetForm()"
+
+    [disabled]="saving() || !hasChanges()">
+
+    Cancel
+
+</button>
+
+<button
+
+    type="button"
+
+    class="primary-btn"
+
+    (click)="save()"
+
+    [disabled]="
+
+        saving()
+
+        || !hasChanges()
+
+        || !formValid()
+
+    ">
+
+    {{ saving() ? 'Saving...' : 'Save Changes' }}
+
+</button>
+
+    </div>
+
+    @if (hasChanges()) {
+
+    <div class="unsaved-banner">
+
+        You have unsaved changes.
+
+    </div>
+
+}
+
+</div>

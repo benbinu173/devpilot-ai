@@ -1,0 +1,29 @@
+.page{
+
+    padding:32px;
+
+}
+
+.page h1{
+
+    margin-bottom:10px;
+
+}
+
+.page p{
+
+    color:#94A3B8;
+
+    margin-bottom:32px;
+
+}
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:24px;
+
+}

@@ -1,0 +1,193 @@
+:host {
+  display: contents;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 14, 23, 0.7);
+  backdrop-filter: blur(3px);
+  z-index: 998;
+}
+
+.diff-viewer {
+  position: fixed;
+  inset: 40px;
+  background: var(--surface-2);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ==========================================================
+   Header
+========================================================== */
+
+.header {
+  flex-shrink: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-1);
+}
+
+.header__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header__title h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.ai-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px rgba(34, 211, 238, 0.6);
+  flex-shrink: 0;
+}
+
+.header__file {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+/* ==========================================================
+   Diff editor area
+========================================================== */
+
+.editor {
+  flex: 1;
+  min-height: 0;
+}
+
+/* ==========================================================
+   Footer
+========================================================== */
+
+.footer {
+  flex-shrink: 0;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 24px;
+  border-top: 1px solid var(--border);
+  background: var(--surface-1);
+}
+
+.footer__spacer {
+  flex: 1;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.btn--undo {
+  background: var(--warning-light);
+  color: var(--warning);
+  border-color: rgba(251, 191, 36, 0.25);
+}
+
+.btn--undo:hover {
+  background: rgba(251, 191, 36, 0.2);
+}
+
+.btn--reject {
+  background: var(--surface-3);
+  color: var(--text-secondary);
+  border-color: var(--border);
+}
+
+.btn--reject:hover {
+  color: var(--text-primary);
+  border-color: var(--border-hover);
+}
+
+.btn--accept {
+  background: var(--success);
+  color: #0A0E17;
+}
+
+.btn--accept:hover {
+  background: #4ADE80;
+}
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media (max-width: 768px) {
+  .diff-viewer {
+    inset: 0;
+    border-radius: 0;
+    border: none;
+  }
+
+  .header {
+    padding: 0 16px;
+  }
+
+  .header__file {
+    display: none;
+  }
+
+  .footer {
+    padding: 0 16px;
+  }
+
+  .btn {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .btn span,
+  .btn {
+    flex: 1;
+    justify-content: center;
+  }
+}

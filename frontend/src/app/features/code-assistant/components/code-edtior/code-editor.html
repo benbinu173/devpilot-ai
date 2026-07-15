@@ -1,0 +1,9 @@
+<textarea
+
+    [value]="code()"
+
+    (input)="codeChange.emit($any($event.target).value)"
+
+    placeholder="Paste your code here...">
+
+</textarea>

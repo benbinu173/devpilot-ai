@@ -1,0 +1,343 @@
+<div class="security-settings-card">
+
+    <!-- ===================================================== -->
+    <!-- Header -->
+    <!-- ===================================================== -->
+
+    <div class="card-header">
+
+        <div>
+
+            <h2>
+
+                Security Settings
+
+            </h2>
+
+            <p>
+
+                Change your password and keep your account secure.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- Password Form -->
+    <!-- ===================================================== -->
+
+    <div class="password-form">
+
+        <!-- Current Password -->
+
+        <div class="form-group">
+
+            <label>
+
+                Current Password
+
+            </label>
+
+            <div class="password-input">
+
+               <input
+    [type]="showCurrentPassword() ? 'text' : 'password'"
+    placeholder="Enter your current password"
+    [ngModel]="currentPassword()"
+    (ngModelChange)="currentPassword.set($event)
+    " [disabled]="saving()">
+
+    @if (currentPasswordError()) {
+
+    <small class="validation-error">
+
+        {{ currentPasswordError() }}
+
+    </small>
+
+}
+
+
+@if (currentPassword().length > 0 && !currentPasswordValid()) {
+
+    <small class="validation-error">
+
+        Current password is required.
+
+    </small>
+
+}
+
+@if (showCurrentPasswordSuccess()) {
+
+    <small class="validation-success">
+
+        Looks good.
+
+    </small>
+
+}
+
+             <button
+    type="button"
+    class="toggle-password"
+    (click)="toggleCurrentPassword()" [disabled]="saving()">
+
+    {{ showCurrentPassword() ? '🙈' : '👁️' }}
+
+</button>
+
+
+            </div>
+
+        </div>
+
+        <!-- New Password -->
+
+        <div class="form-group">
+
+            <label>
+
+                New Password
+
+            </label>
+
+            <div class="password-input">
+
+             <input
+    [type]="showNewPassword() ? 'text' : 'password'"
+    placeholder="Enter your new password"
+    [ngModel]="newPassword()"
+    (ngModelChange)="newPassword.set($event)" [disabled]="saving()">
+
+    @if (newPasswordError()) {
+
+    <small class="validation-error">
+
+        {{ newPasswordError() }}
+
+    </small>
+
+}
+
+               <button
+    type="button"
+    class="toggle-password"
+    (click)="toggleNewPassword()" [disabled]="saving()">
+
+    {{ showNewPassword() ? '🙈' : '👁️' }}
+
+</button>
+
+            </div>
+
+        </div>
+
+        <!-- Password Strength -->
+
+       @if (newPassword().length > 0) {
+
+    <div class="password-strength">
+
+        <div class="strength-bar">
+
+            <div
+                class="strength-fill"
+                [class]="passwordStrengthClass()"
+                [style.width.%]="passwordStrengthPercentage()">
+
+            </div>
+
+        </div>
+
+        <span>
+
+            {{ passwordStrengthLabel() }}
+
+        </span>
+
+    </div>
+
+}
+
+        <!-- Confirm Password -->
+
+        <div class="form-group">
+
+            <label>
+
+                Confirm Password
+
+            </label>
+
+            <div class="password-input">
+
+               <input
+    [type]="showConfirmPassword() ? 'text' : 'password'"
+    placeholder="Confirm your new password"
+    [ngModel]="confirmPassword()"
+    (ngModelChange)="confirmPassword.set($event)" [disabled]="saving()">
+
+    @if (confirmPasswordError()) {
+
+    <small class="validation-error">
+
+        {{ confirmPasswordError() }}
+
+    </small>
+
+}
+
+
+@if (currentPassword().length > 0 && !currentPasswordValid()) {
+
+    <small class="validation-error">
+
+        Current password is required.
+
+    </small>
+
+}
+
+@if (showCurrentPasswordSuccess()) {
+
+    <small class="validation-success">
+
+        Looks good.
+
+    </small>
+
+}
+
+               <button
+    type="button"
+    class="toggle-password"
+    (click)="toggleConfirmPassword()" [disabled]="saving()">
+
+    {{ showConfirmPassword() ? '🙈' : '👁️' }}
+
+</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- Password Requirements -->
+    <!-- ===================================================== -->
+
+    <div class="requirements-card">
+
+        <h3>
+
+            Password Requirements
+
+        </h3>
+
+        <ul>
+
+          <li>
+
+    {{ hasMinLength() ? '✓' : '•' }}
+
+    At least 8 characters
+
+</li>
+
+<li>
+
+    {{ hasUppercase() ? '✓' : '•' }}
+
+    One uppercase letter
+
+</li>
+
+<li>
+
+    {{ hasLowercase() ? '✓' : '•' }}
+
+    One lowercase letter
+
+</li>
+
+<li>
+
+    {{ hasNumber() ? '✓' : '•' }}
+
+    One number
+
+</li>
+
+<li>
+
+    {{ hasSpecialCharacter() ? '✓' : '•' }}
+
+    One special character
+
+</li>
+
+        </ul>
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- Footer -->
+    <!-- ===================================================== -->
+
+    <div class="card-footer">
+
+   <button
+
+    type="button"
+
+    class="secondary-btn"
+
+    (click)="resetForm()"
+
+    [disabled]="
+
+        !hasChanges()
+
+        || saving()
+
+    ">
+
+    Cancel
+
+</button>
+
+   <button
+
+    type="button"
+
+    class="primary-btn"
+
+    (click)="save()"
+
+    [disabled]="
+
+        !formValid()
+
+        || saving()
+
+    ">
+
+    {{
+
+        saving()
+
+        ? 'Updating Password...'
+
+        : 'Update Password'
+
+    }}
+
+</button>
+
+    </div>
+
+</div>

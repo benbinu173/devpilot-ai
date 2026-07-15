@@ -1,0 +1,64 @@
+<div class="message" [class.user]="sender() === 'user'">
+
+    <div class="message__avatar" aria-hidden="true">
+
+        @if (sender() === 'user') {
+
+            <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"></path>
+            </svg>
+
+        } @else {
+
+            <svg viewBox="0 0 24 24">
+                <rect x="4" y="9" width="16" height="11" rx="2"></rect>
+                <path d="M9 9V6a3 3 0 0 1 6 0v3"></path>
+                <line x1="9" y1="14" x2="9" y2="14"></line>
+                <line x1="15" y1="14" x2="15" y2="14"></line>
+                <line x1="12" y1="3" x2="12" y2="1.5"></line>
+            </svg>
+
+        }
+
+    </div>
+
+    <div class="message__bubble">
+
+        <app-markdown-renderer
+
+            [markdown]="content()">
+
+        </app-markdown-renderer>
+
+        @if (code()) {
+
+            <pre class="message__code"><code>{{ code() }}</code></pre>
+
+        }
+
+        @if (sender() === 'assistant') {
+
+            <app-response-actions
+
+                [content]="content()"
+
+                (copy)="copyMessage()"
+
+                (save)="saveSnippet()"
+
+                (regenerate)="regenerate()"
+
+                (like)="likeResponse()"
+
+                (dislike)="dislikeResponse()">
+
+            </app-response-actions>
+
+        }
+
+        <span class="message__time">{{ timestamp() }}</span>
+
+    </div>
+
+</div>

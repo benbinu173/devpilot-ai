@@ -1,0 +1,60 @@
+@if (patch()) {
+
+<div class="backdrop" (click)="reject()"></div>
+
+<div class="diff-viewer" role="dialog" aria-modal="true" aria-label="AI code review">
+
+    <div class="header">
+        <div class="header__title">
+            <span class="ai-dot"></span>
+            <h2>AI Code Review</h2>
+        </div>
+        <span class="header__file">{{ workspace.activeFile()?.name }}</span>
+    </div>
+
+    <div
+        #diffContainer
+        class="editor">
+    </div>
+
+    <div class="footer">
+
+        <button
+            class="btn btn--undo"
+            type="button"
+            (click)="undoLast()">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 14l-4-4 4-4"></path>
+                <path d="M5 10h11a4 4 0 0 1 0 8h-1"></path>
+            </svg>
+            Undo AI
+        </button>
+
+        <div class="footer__spacer"></div>
+
+        <button
+            class="btn btn--reject"
+            type="button"
+            (click)="reject()">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+            Reject
+        </button>
+
+        <button
+            class="btn btn--accept"
+            type="button"
+            (click)="accept()">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Accept
+        </button>
+
+    </div>
+
+</div>
+
+}

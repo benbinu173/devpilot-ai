@@ -1,0 +1,133 @@
+.timeline-card {
+
+    display: flex;
+
+    gap: 16px;
+
+    align-items: flex-start;
+
+    padding: 18px 20px;
+
+    background: var(--surface-2);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-sm);
+
+    transition: border-color .25s ease, background .25s ease;
+
+}
+
+.timeline-card:hover {
+
+    border-color: var(--border-hover);
+
+    background: var(--surface-3);
+
+}
+
+.timeline-card__icon {
+
+    flex-shrink: 0;
+
+    width: 44px;
+
+    height: 44px;
+
+    border-radius: 50%;
+
+    background: var(--surface-3);
+
+    border: 1px solid var(--border);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+.timeline-card__icon svg {
+
+    width: 19px;
+
+    height: 19px;
+
+    stroke: currentColor;
+
+    fill: none;
+
+    stroke-width: 1.8;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+
+}
+
+/* Per-activity-type accent, matching the rest of the dashboard */
+
+.timeline-card__icon--snippet {
+
+    color: var(--primary);
+
+}
+
+.timeline-card__icon--favorite {
+
+    color: var(--warning);
+
+}
+
+.timeline-card__icon--ai {
+
+    color: var(--accent);
+
+}
+
+.timeline-card__icon--workspace {
+
+    color: var(--text-secondary);
+
+}
+
+.timeline-card__content {
+
+    flex: 1;
+
+    min-width: 0;
+
+}
+
+.timeline-card__title {
+
+    margin: 0;
+
+    font-size: 15.5px;
+
+    font-weight: 600;
+
+    color: var(--text-primary);
+
+}
+
+.timeline-card__description {
+
+    margin: 5px 0;
+
+    color: var(--text-secondary);
+
+    font-size: 14px;
+
+    line-height: 1.55;
+
+}
+
+.timeline-card__time {
+
+    font-size: 12.5px;
+
+    color: var(--text-tertiary);
+
+}

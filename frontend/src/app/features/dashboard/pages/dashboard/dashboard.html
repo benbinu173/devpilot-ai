@@ -1,0 +1,241 @@
+<div class="dashboard">
+
+    <app-welcome-banner
+        [title]="greeting"
+        username="Ben"
+        [subtitle]="subtitle">
+    </app-welcome-banner>
+
+    <!-- ===================================================== -->
+    <!-- Dashboard Overview -->
+    <!-- ===================================================== -->
+
+    <section class="dashboard-section">
+
+        <div class="stats-grid">
+
+            <app-stat-card
+                title="AI Conversations"
+                value="152"
+                icon="conversations"
+                description="Total AI conversations">
+            </app-stat-card>
+
+            <app-stat-card
+                title="Saved Snippets"
+                [value]="stats().snippets.toString()"
+                icon="snippets"
+                description="Saved code snippets">
+            </app-stat-card>
+
+            <app-stat-card
+                title="Favorite Snippets"
+                [value]="stats().favoriteSnippets.toString()"
+                icon="favorites"
+                description="Favorite code snippets">
+            </app-stat-card>
+
+            <app-stat-card
+                title="Workspace Files"
+                [value]="stats().workspaceFiles.toString()"
+                icon="files"
+                description="Files in workspace">
+            </app-stat-card>
+
+        </div>
+
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- Quick Actions -->
+    <!-- ===================================================== -->
+
+    <section class="dashboard-section">
+
+        <app-section-header
+            title="Quick Actions"
+            subtitle="Jump directly to your most-used tools.">
+        </app-section-header>
+
+        <div class="actions-grid">
+
+            @for (action of actions; track action.title) {
+
+                <div
+                    class="action-wrapper"
+                    tabindex="0"
+                    role="button"
+                    [attr.aria-label]="action.title"
+                    (click)="navigate(action.route)"
+                    (keydown.enter)="navigate(action.route)">
+
+                    <app-action-card
+                        [icon]="action.icon"
+                        [title]="action.title"
+                        [description]="action.description">
+                    </app-action-card>
+
+                </div>
+
+            }
+
+        </div>
+
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- Workspace Snapshot -->
+    <!-- ===================================================== -->
+
+    <section class="dashboard-section">
+
+        <app-section-header
+            title="Workspace Snapshot"
+            subtitle="Current workspace overview.">
+        </app-section-header>
+
+        <app-workspace-snapshot-card
+            [snapshot]="workspaceSnapshot()">
+        </app-workspace-snapshot-card>
+
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- Recent Code Snippets -->
+    <!-- ===================================================== -->
+
+    <section class="dashboard-section">
+
+        <app-section-header
+            title="Recent Code Snippets"
+            subtitle="Your latest saved snippets.">
+        </app-section-header>
+
+        @if (recentSnippets().length) {
+
+            <div class="snippet-list">
+
+                @for (snippet of recentSnippets(); track snippet.id) {
+
+                    <app-recent-snippet-card
+                        [snippet]="snippet">
+                    </app-recent-snippet-card>
+
+                }
+
+            </div>
+
+        }
+        @else {
+
+            <div class="empty-dashboard">
+
+                <div class="empty-dashboard-icon" aria-hidden="true">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M6 3h9l4 4v14H6z"></path>
+                        <path d="M15 3v4h4"></path>
+                        <line x1="9" y1="13" x2="15" y2="13"></line>
+                        <line x1="9" y1="17" x2="13" y2="17"></line>
+                    </svg>
+
+                </div>
+
+                <h3>No snippets yet</h3>
+
+                <p>
+                    Create your first code snippet to see it here.
+                </p>
+
+            </div>
+
+        }
+
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- Recent Conversations -->
+    <!-- (Will become live in upcoming phase) -->
+    <!-- ===================================================== -->
+
+    <section class="dashboard-section">
+
+        <app-section-header
+            title="Recent Conversations"
+            subtitle="Continue where you left off.">
+        </app-section-header>
+
+        @if (recentConversations().length) {
+
+            <div class="conversation-list">
+
+                @for (
+                    conversation of recentConversations();
+                    track conversation._id
+                ) {
+
+                    <app-conversation-card
+
+                        [conversation]="conversation">
+
+                    </app-conversation-card>
+
+                }
+
+            </div>
+
+        }
+        @else {
+
+            <div class="empty-dashboard">
+
+                <div class="empty-dashboard-icon" aria-hidden="true">
+
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="5" width="18" height="13" rx="2"></rect>
+                        <path d="M7 20l3-2h4l3 2"></path>
+                    </svg>
+
+                </div>
+
+                <h3>No conversations yet</h3>
+
+                <p>
+                    Start a conversation with DevPilot AI to see your history here.
+                </p>
+
+            </div>
+
+        }
+
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- Recent Activity -->
+    <!-- (Will become live in upcoming phase) -->
+    <!-- ===================================================== -->
+
+    <section class="dashboard-section">
+
+        <app-section-header
+            title="Recent Activity"
+            subtitle="Latest actions across your workspace.">
+        </app-section-header>
+
+        <div class="activity-list">
+
+            @for (activity of activities; track activity.id) {
+
+                <app-activity-timeline-card
+
+                    [activity]="activity">
+
+                </app-activity-timeline-card>
+
+            }
+
+        </div>
+
+    </section>
+
+</div>

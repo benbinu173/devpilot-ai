@@ -1,0 +1,93 @@
+:host {
+  display: block;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.actions__group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.actions__divider {
+  width: 1px;
+  height: 16px;
+  background: var(--border);
+  margin: 0 6px;
+  flex-shrink: 0;
+}
+
+.actions button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  color: var(--text-tertiary);
+  font-size: 12.5px;
+  font-weight: 500;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.actions button svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.actions button:hover {
+  background: var(--surface-3);
+  color: var(--text-primary);
+}
+
+.actions button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Toggled feedback states */
+.actions__rate--active {
+  color: var(--success);
+  background: var(--success-light);
+  border-color: rgba(52, 211, 153, 0.25);
+}
+
+.actions__rate--active:hover {
+  background: var(--success-light);
+  color: var(--success);
+}
+
+.actions__rate--active-negative {
+  color: var(--danger);
+  background: var(--danger-light);
+  border-color: rgba(248, 113, 113, 0.25);
+}
+
+.actions__rate--active-negative:hover {
+  background: var(--danger-light);
+  color: var(--danger);
+}
+
+.actions__copy.actions__copy--copied {
+  color: var(--success);
+}
+
+.actions__copy.actions__copy--copied:hover {
+  background: var(--success-light);
+}

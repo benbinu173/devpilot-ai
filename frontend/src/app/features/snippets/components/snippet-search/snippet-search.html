@@ -1,0 +1,35 @@
+<div class="snippet-search">
+
+    <div class="search-container">
+
+        <span class="search-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="7"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+        </span>
+
+        <input
+            type="text"
+            class="search-input"
+            placeholder="Search snippets..."
+            aria-label="Search snippets"
+            [ngModel]="search()"
+            (ngModelChange)="search.set($event)" />
+
+        @if (search()) {
+            <button
+                type="button"
+                class="clear-button"
+                aria-label="Clear search"
+                (click)="search.set('')">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        }
+
+    </div>
+
+</div>

@@ -1,0 +1,49 @@
+<section class="workspace">
+
+    <div class="workspace-tabbar">
+        <button
+            type="button"
+            [class.active]="activePanel() === 'files'"
+            (click)="setPanel('files')">
+            Files
+        </button>
+        <button
+            type="button"
+            [class.active]="activePanel() === 'editor'"
+            (click)="setPanel('editor')">
+            Editor
+        </button>
+        <button
+            type="button"
+            [class.active]="activePanel() === 'ai'"
+            (click)="setPanel('ai')">
+            AI Assistant
+        </button>
+    </div>
+
+    <aside class="workspace-sidebar" [class.active]="activePanel() === 'files'">
+        <app-workspace-sidebar></app-workspace-sidebar>
+    </aside>
+
+    <main class="workspace-preview" [class.active]="activePanel() === 'editor'">
+
+        <div class="workspace-preview__header">
+            <app-editor-tabs></app-editor-tabs>
+            <app-save-status></app-save-status>
+        </div>
+
+        <div class="workspace-preview__editor">
+            <app-monaco-editor></app-monaco-editor>
+        </div>
+
+    </main>
+
+    <section class="workspace-ai" [class.active]="activePanel() === 'ai'">
+        <app-workspace-ai></app-workspace-ai>
+    </section>
+
+    <!-- Fixed full-screen modal — sibling at top level, not nested,
+         since it manages its own position:fixed + backdrop -->
+    <app-ai-diff-viewer></app-ai-diff-viewer>
+
+</section>

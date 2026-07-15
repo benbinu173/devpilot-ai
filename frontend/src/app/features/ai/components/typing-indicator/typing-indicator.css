@@ -1,0 +1,143 @@
+.typing-indicator {
+
+    display: flex;
+
+    gap: 12px;
+
+    align-items: flex-start;
+
+}
+
+/* ==========================================================
+   Avatar — matches app-chat-message's assistant avatar
+========================================================== */
+
+.typing-indicator__avatar {
+
+    flex-shrink: 0;
+
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: var(--accent-light);
+
+    color: var(--accent);
+
+}
+
+.typing-indicator__avatar svg {
+
+    width: 16px;
+
+    height: 16px;
+
+    stroke: currentColor;
+
+    fill: none;
+
+    stroke-width: 1.8;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+
+}
+
+/* ==========================================================
+   Bubble
+========================================================== */
+
+.typing-indicator__bubble {
+
+    display: flex;
+
+    align-items: center;
+
+    background: var(--surface-2);
+
+    border: 1px solid var(--border);
+
+    border-radius: 16px;
+
+    border-top-left-radius: 4px;
+
+    padding: 16px 18px;
+
+}
+
+.typing-indicator__dots {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+}
+
+.typing-indicator__dots span {
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    animation: typingBounce .9s infinite ease-in-out;
+
+}
+
+.typing-indicator__dots span:nth-child(2) {
+
+    animation-delay: .15s;
+
+}
+
+.typing-indicator__dots span:nth-child(3) {
+
+    animation-delay: .3s;
+
+}
+
+@keyframes typingBounce {
+
+    from {
+
+        transform: translateY(0);
+
+        opacity: .5;
+
+    }
+
+    to {
+
+        transform: translateY(-6px);
+
+        opacity: 1;
+
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .typing-indicator__dots span {
+
+        animation: none;
+
+        opacity: .8;
+
+    }
+
+}
