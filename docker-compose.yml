@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+
+  backend:
+    container_name: devpilot-backend
+
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+
+    ports:
+      - "5000:5000"
+
+    env_file:
+      - ./backend/.env
+
+    restart: unless-stopped
+
+  frontend:
+    container_name: devpilot-frontend
+
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+
+    ports:
+      - "4200:80"
+
+    depends_on:
+      - backend
+
+    restart: unless-stopped
