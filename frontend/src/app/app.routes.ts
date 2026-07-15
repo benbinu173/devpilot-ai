@@ -6,12 +6,12 @@ import { authGuard } from './core/guards/auth-guard';
 export const routes: Routes = [
 
   // Landing Page
-  {
-    path: '',
-    loadComponent: () =>
-      import('./features/landing/pages/landing/landing')
-        .then(m => m.Landing)
-  },
+ {
+  path: '',
+  loadComponent: () =>
+    import('./features/home/home-redirect')
+      .then(m => m.HomeRedirect)
+},
 
   // Authentication
   {
